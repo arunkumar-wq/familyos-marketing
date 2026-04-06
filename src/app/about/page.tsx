@@ -94,63 +94,6 @@ function Founder() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  FOUNDER STRENGTHS                                                 */
-/* ------------------------------------------------------------------ */
-function FounderStrengths() {
-  const strengths = [
-    {
-      icon: "🏗️",
-      title: "Proven Builder",
-      desc: "Founded, scaled, and exited a digital agency over 20 years. Knows the full lifecycle from zero to acquisition.",
-    },
-    {
-      icon: "🎯",
-      title: "Customer-Founder Fit",
-      desc: "Lives the problem every day. Manages his own family documents, estate plans, and investment portfolio with FamilyOS.",
-    },
-    {
-      icon: "💻",
-      title: "Product Expertise",
-      desc: "Deep background in web technology, UX design, digital marketing, and automation — the foundations of modern SaaS.",
-    },
-    {
-      icon: "🤝",
-      title: "Domain Network",
-      desc: "Two decades of relationships across financial services, legal, and technology — opening doors competitors can't.",
-    },
-  ];
-
-  return (
-    <section className="bg-gray-bg py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy">
-            Why Gurmail
-          </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            The right founder for the right problem at the right time.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {strengths.map((s) => (
-            <div
-              key={s.title}
-              className="bg-white rounded-2xl p-8 border border-gray-100 text-center"
-            >
-              <span className="text-4xl">{s.icon}</span>
-              <h3 className="mt-4 text-lg font-bold text-navy">{s.title}</h3>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                {s.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  MISSION                                                           */
 /* ------------------------------------------------------------------ */
 function Mission() {
@@ -254,7 +197,6 @@ export default function AboutPage() {
       <main>
         <AboutHero />
         <Founder />
-        <FounderStrengths />
         <Mission />
         <CompanyStats />
         <CTA />

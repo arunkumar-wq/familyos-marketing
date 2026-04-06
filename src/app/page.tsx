@@ -81,7 +81,7 @@ function Problem() {
               key={s.value}
               className="bg-gray-bg rounded-2xl p-8 text-center border border-gray-100"
             >
-              <div className="text-4xl sm:text-5xl font-bold text-orange">
+              <div className="text-4xl sm:text-[2.75rem] font-bold text-orange whitespace-nowrap">
                 {s.value}
               </div>
               <p className="mt-4 text-gray-700 font-medium">{s.label}</p>
