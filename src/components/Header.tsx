@@ -6,7 +6,6 @@ import Link from "next/link";
 const APP_URL = "https://familyos-staging-production.up.railway.app";
 
 const links = [
-  { label: "Home", href: "/" },
   { label: "Features", href: "/features" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
@@ -16,23 +15,23 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-border">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 flex items-center justify-between h-14">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 text-navy font-bold text-lg tracking-tight">
-          <span className="w-8 h-8 bg-teal rounded-lg flex items-center justify-center text-white text-sm font-bold">
+        <Link href="/" className="flex items-center gap-2 text-slate-900 font-semibold text-[15px] tracking-tight">
+          <span className="w-7 h-7 bg-teal rounded-md flex items-center justify-center text-white text-xs font-bold">
             F
           </span>
           FamilyOS
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-[13px] font-medium text-slate-500 hover:text-navy transition-colors"
+              className="text-sm text-slate-500 hover:text-slate-900 transition-colors"
             >
               {l.label}
             </Link>
@@ -40,24 +39,24 @@ export default function Header() {
         </nav>
 
         {/* Desktop buttons */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <a
             href={APP_URL}
-            className="text-[13px] font-medium text-slate-500 hover:text-navy transition-colors"
+            className="text-sm text-slate-500 hover:text-slate-900 transition-colors"
           >
-            Login
+            Log in
           </a>
           <Link
             href="/pricing"
-            className="bg-teal text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-teal-hover transition-colors"
+            className="btn-press bg-slate-900 text-white text-sm font-medium px-4 py-1.5 rounded-full hover:bg-slate-800 transition-colors"
           >
-            Start Free Trial
+            Get Started
           </Link>
         </div>
 
         {/* Mobile hamburger — 44px tap target */}
         <button
-          className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 rounded-lg text-slate-500 hover:bg-gray-bg transition-colors"
+          className="md:hidden flex items-center justify-center w-10 h-10 -mr-1.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -75,32 +74,29 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-border px-5 pb-5 pt-2">
-          <nav className="space-y-1">
+        <div className="md:hidden bg-white border-t border-slate-100 px-5 pb-4 pt-2">
+          <nav className="space-y-0.5">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="block text-sm font-medium text-slate-600 hover:text-navy hover:bg-gray-bg rounded-lg px-3 py-2.5 transition-colors"
+                className="block text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg px-3 py-2.5 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {l.label}
               </Link>
             ))}
           </nav>
-          <div className="mt-3 pt-3 border-t border-gray-border space-y-2">
-            <a
-              href={APP_URL}
-              className="block text-sm font-medium text-slate-600 px-3 py-2.5"
-            >
-              Login
+          <div className="mt-3 pt-3 border-t border-slate-100 space-y-2">
+            <a href={APP_URL} className="block text-sm text-slate-600 px-3 py-2.5">
+              Log in
             </a>
             <Link
               href="/pricing"
-              className="block bg-teal text-white text-sm font-semibold px-4 py-2.5 rounded-lg text-center hover:bg-teal-hover transition-colors"
+              className="block bg-slate-900 text-white text-sm font-medium px-4 py-2.5 rounded-full text-center hover:bg-slate-800 transition-colors"
               onClick={() => setMenuOpen(false)}
             >
-              Start Free Trial
+              Get Started
             </Link>
           </div>
         </div>

@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* ---- Typography ---- */
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
   /* ---- Primary palette ---- */
-  --color-navy: #1B2B4B;
-  --color-navy-light: #243757;
-  --color-navy-dark: #0F1D32;
+  --color-navy: #0F172A;
+  --color-navy-light: #1E293B;
+  --color-navy-dark: #020617;
   --color-teal: #0D9488;
-  --color-teal-hover: #0B8276;
+  --color-teal-hover: #0F766E;
   --color-teal-light: #F0FDFA;
   --color-orange: #F97316;
   --color-orange-hover: #EA6C10;
@@ -16,24 +20,17 @@
   --color-gray-border: #E2E8F0;
 
   /* ---- Shadows ---- */
-  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
-  --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
-  --shadow-elevated: 0 10px 25px -3px rgb(0 0 0 / 0.08), 0 4px 10px -4px rgb(0 0 0 / 0.04);
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+  --shadow-card-hover: 0 4px 16px 0 rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-elevated: 0 12px 32px -4px rgb(0 0 0 / 0.1), 0 4px 12px -4px rgb(0 0 0 / 0.05);
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
   color: #1E293B;
   line-height: 1.6;
 }
 
-/* Smooth focus rings */
+/* Focus rings */
 *:focus-visible {
   outline: 2px solid #0D9488;
   outline-offset: 2px;
@@ -44,61 +41,57 @@ body {
 /*  ANIMATIONS                                                        */
 /* ================================================================== */
 
-/* ---- Scroll-triggered fade-in ---- */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Stagger children — each child delays slightly more */
 .stagger > .animate-on-scroll:nth-child(1) { transition-delay: 0ms; }
-.stagger > .animate-on-scroll:nth-child(2) { transition-delay: 80ms; }
-.stagger > .animate-on-scroll:nth-child(3) { transition-delay: 160ms; }
-.stagger > .animate-on-scroll:nth-child(4) { transition-delay: 240ms; }
-.stagger > .animate-on-scroll:nth-child(5) { transition-delay: 320ms; }
-.stagger > .animate-on-scroll:nth-child(6) { transition-delay: 400ms; }
-.stagger > .animate-on-scroll:nth-child(7) { transition-delay: 480ms; }
-.stagger > .animate-on-scroll:nth-child(8) { transition-delay: 560ms; }
-.stagger > .animate-on-scroll:nth-child(9) { transition-delay: 640ms; }
+.stagger > .animate-on-scroll:nth-child(2) { transition-delay: 100ms; }
+.stagger > .animate-on-scroll:nth-child(3) { transition-delay: 200ms; }
+.stagger > .animate-on-scroll:nth-child(4) { transition-delay: 300ms; }
+.stagger > .animate-on-scroll:nth-child(5) { transition-delay: 400ms; }
+.stagger > .animate-on-scroll:nth-child(6) { transition-delay: 500ms; }
+.stagger > .animate-on-scroll:nth-child(7) { transition-delay: 600ms; }
+.stagger > .animate-on-scroll:nth-child(8) { transition-delay: 700ms; }
+.stagger > .animate-on-scroll:nth-child(9) { transition-delay: 800ms; }
 
-/* ---- Hero entrance ---- */
 @keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .hero-animate > * {
-  animation: hero-fade-up 0.7s ease-out both;
+  animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .hero-animate > *:nth-child(1) { animation-delay: 0ms; }
-.hero-animate > *:nth-child(2) { animation-delay: 100ms; }
-.hero-animate > *:nth-child(3) { animation-delay: 200ms; }
-.hero-animate > *:nth-child(4) { animation-delay: 300ms; }
-.hero-animate > *:nth-child(5) { animation-delay: 400ms; }
+.hero-animate > *:nth-child(2) { animation-delay: 120ms; }
+.hero-animate > *:nth-child(3) { animation-delay: 240ms; }
+.hero-animate > *:nth-child(4) { animation-delay: 360ms; }
+.hero-animate > *:nth-child(5) { animation-delay: 480ms; }
 
-/* ---- Float for hero screenshot ---- */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
+  50%      { transform: translateY(-8px); }
 }
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
-/* ---- Card lift on hover ---- */
 .card-hover {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.08);
 }
 
-/* ---- Button press effect ---- */
 .btn-press {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -106,20 +99,9 @@ body {
   transform: scale(0.97);
 }
 
-/* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
-  .animate-on-scroll {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .hero-animate > * {
-    animation: none;
-  }
-  .animate-float {
-    animation: none;
-  }
-  .card-hover:hover {
-    transform: none;
-  }
+  .animate-on-scroll { opacity: 1; transform: none; transition: none; }
+  .hero-animate > * { animation: none; }
+  .animate-float { animation: none; }
+  .card-hover:hover { transform: none; }
 }
