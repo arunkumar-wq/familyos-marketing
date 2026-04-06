@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimateOnScroll, { FadeIn } from "@/components/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "Features",
@@ -96,7 +97,7 @@ function DocumentVault() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <FadeIn className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
             <span>🔒</span> Pillar 1
           </div>
@@ -106,12 +107,14 @@ function DocumentVault() {
           <p className="mt-3 text-base text-slate-500">
             AI-powered storage that doesn&apos;t just hold your documents &mdash; it understands them.
           </p>
-        </div>
-        <div className="space-y-12">
+        </FadeIn>
+        <AnimateOnScroll stagger className="space-y-12">
           {features.map((f, i) => (
-            <FeatureRow key={f.title} icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
+            <div key={f.title} className="animate-on-scroll">
+              <FeatureRow icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
+            </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
@@ -132,7 +135,7 @@ function FinancialIntelligence() {
   return (
     <section className="bg-gray-bg py-20 sm:py-24">
       <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <FadeIn className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
             <span>💰</span> Pillar 2
           </div>
@@ -142,12 +145,14 @@ function FinancialIntelligence() {
           <p className="mt-3 text-base text-slate-500">
             Your family&apos;s complete financial picture, powered by AI that speaks plain English.
           </p>
-        </div>
-        <div className="space-y-12">
+        </FadeIn>
+        <AnimateOnScroll stagger className="space-y-12">
           {features.map((f, i) => (
-            <FeatureRow key={f.title} icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
+            <div key={f.title} className="animate-on-scroll">
+              <FeatureRow icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
+            </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

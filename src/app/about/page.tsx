@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimateOnScroll, { FadeIn } from "@/components/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "About",
@@ -39,9 +40,9 @@ function Founder() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <AnimateOnScroll stagger className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Photo */}
-          <div className="flex justify-center md:justify-start">
+          <div className="animate-on-scroll flex justify-center md:justify-start">
             <div className="relative">
               <div className="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-[var(--shadow-elevated)] border border-gray-border">
                 <Image
@@ -60,7 +61,7 @@ function Founder() {
           </div>
 
           {/* Bio */}
-          <div>
+          <div className="animate-on-scroll">
             <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
               Founder &amp; CEO
             </div>
@@ -87,7 +88,7 @@ function Founder() {
               started as a personal frustration.&rdquo;
             </p>
           </div>
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
@@ -134,14 +135,14 @@ function CompanyStats() {
         <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight text-center">
           FamilyOS by the Numbers
         </h2>
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <AnimateOnScroll stagger className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((s) => (
-            <div key={s.label} className="bg-gray-bg rounded-xl p-6 text-center border border-gray-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+            <div key={s.label} className="animate-on-scroll card-hover bg-gray-bg rounded-xl p-6 text-center border border-gray-border shadow-[var(--shadow-card)]">
               <div className="text-2xl sm:text-3xl font-bold text-teal">{s.value}</div>
               <p className="mt-1.5 text-sm text-slate-500 font-medium">{s.label}</p>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

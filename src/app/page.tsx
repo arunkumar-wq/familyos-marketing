@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimateOnScroll, { FadeIn } from "@/components/AnimateOnScroll";
 
 const APP_URL = "https://familyos-staging-production.up.railway.app";
 
@@ -13,7 +14,7 @@ const APP_URL = "https://familyos-staging-production.up.railway.app";
 function Hero() {
   return (
     <section id="home" className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-0 text-center">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-0 text-center hero-animate">
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[13px] font-medium px-4 py-1.5 rounded-full mb-6 border border-white/10">
           <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
           AI-Powered Family Management
@@ -28,22 +29,15 @@ function Hero() {
           and future. AI-powered. Bank-grade secure. Starting at $149/yr.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href="#pricing"
-            className="bg-teal text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-sm"
-          >
+          <a href="#pricing" className="btn-press bg-teal text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-sm">
             Start Free Trial
           </a>
-          <a
-            href="#how-it-works"
-            className="border border-white/20 text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-white/5 transition-all w-full sm:w-auto text-sm"
-          >
+          <a href="#how-it-works" className="btn-press border border-white/20 text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-white/5 transition-all w-full sm:w-auto text-sm">
             Watch Demo
           </a>
         </div>
 
-        {/* Product screenshot — clipped to show top portion only */}
-        <div className="mt-10 sm:mt-12 relative mx-auto max-w-4xl">
+        <div className="mt-10 sm:mt-12 relative mx-auto max-w-4xl animate-float">
           <div className="rounded-t-xl overflow-hidden border border-white/10 border-b-0 shadow-2xl">
             <div className="bg-slate-800 px-4 py-2 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-red-400/80" />
@@ -51,14 +45,7 @@ function Hero() {
               <span className="w-2 h-2 rounded-full bg-green-400/80" />
               <span className="ml-3 text-[10px] text-slate-400 bg-slate-700/60 rounded px-2.5 py-0.5">app.familyos.com</span>
             </div>
-            <Image
-              src="/images/hero-dashboard.jpg"
-              alt="FamilyOS Dashboard — unified family command center"
-              width={1200}
-              height={675}
-              className="w-full h-auto block"
-              priority
-            />
+            <Image src="/images/hero-dashboard.jpg" alt="FamilyOS Dashboard" width={1200} height={675} className="w-full h-auto block" priority />
           </div>
         </div>
       </div>
@@ -79,28 +66,19 @@ function Problem() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">
-            Families Are Flying Blind
-          </h2>
-          <p className="mt-3 text-base text-slate-500">
-            Critical documents scattered. Financial portfolios fragmented.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">Families Are Flying Blind</h2>
+          <p className="mt-3 text-base text-slate-500">Critical documents scattered. Financial portfolios fragmented.</p>
+        </FadeIn>
+        <AnimateOnScroll stagger className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
           {stats.map((s) => (
-            <div
-              key={s.value}
-              className="bg-gray-bg rounded-xl p-6 sm:p-8 text-center border border-gray-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
-            >
-              <div className="text-3xl sm:text-4xl font-bold text-navy whitespace-nowrap">
-                {s.value}
-              </div>
+            <div key={s.value} className="animate-on-scroll card-hover bg-gray-bg rounded-xl p-6 sm:p-8 text-center border border-gray-border shadow-[var(--shadow-card)]">
+              <div className="text-3xl sm:text-4xl font-bold text-navy whitespace-nowrap">{s.value}</div>
               <p className="mt-3 text-sm text-slate-600 font-medium leading-snug">{s.label}</p>
               <p className="mt-2 text-[11px] text-slate-400 uppercase tracking-wider">{s.source}</p>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
@@ -111,17 +89,13 @@ function Problem() {
 /* ------------------------------------------------------------------ */
 function Solution() {
   const docFeatures = [
-    { icon: "📄", text: "AI Auto-Filing" },
-    { icon: "🔔", text: "Smart Reminders" },
-    { icon: "🔍", text: "Family Profile Audit" },
-    { icon: "👥", text: "Role-Based Sharing" },
+    { icon: "📄", text: "AI Auto-Filing" }, { icon: "🔔", text: "Smart Reminders" },
+    { icon: "🔍", text: "Family Profile Audit" }, { icon: "👥", text: "Role-Based Sharing" },
     { icon: "🚨", text: "Emergency Access" },
   ];
   const finFeatures = [
-    { icon: "📊", text: "Net Worth Dashboard" },
-    { icon: "🤖", text: "AI Portfolio Insights" },
-    { icon: "⚡", text: "Proactive Alerts" },
-    { icon: "🌍", text: "Multi-Currency" },
+    { icon: "📊", text: "Net Worth Dashboard" }, { icon: "🤖", text: "AI Portfolio Insights" },
+    { icon: "⚡", text: "Proactive Alerts" }, { icon: "🌍", text: "Multi-Currency" },
     { icon: "👨\u200d👩\u200d👧\u200d👦", text: "Family Planning" },
   ];
   const connections = [
@@ -133,14 +107,14 @@ function Solution() {
   return (
     <section id="about" className="bg-gray-bg py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight text-center">
-          Two Pillars, One Intelligent Platform
-        </h2>
+        <FadeIn className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">Two Pillars, One Intelligent Platform</h2>
+        </FadeIn>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <AnimateOnScroll stagger className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-4">
           {[{ title: "Intelligent Document Vault", icon: "🔒", items: docFeatures },
             { title: "Financial Portfolio Intelligence", icon: "💰", items: finFeatures }].map((pillar) => (
-            <div key={pillar.title} className="bg-white rounded-xl p-6 sm:p-8 border border-gray-border shadow-[var(--shadow-card)]">
+            <div key={pillar.title} className="animate-on-scroll card-hover bg-white rounded-xl p-6 sm:p-8 border border-gray-border shadow-[var(--shadow-card)]">
               <div className="flex items-center gap-3 mb-5">
                 <span className="w-9 h-9 bg-teal/10 rounded-lg flex items-center justify-center text-lg">{pillar.icon}</span>
                 <h3 className="text-lg font-bold text-navy">{pillar.title}</h3>
@@ -148,28 +122,29 @@ function Solution() {
               <ul className="space-y-2.5">
                 {pillar.items.map((f) => (
                   <li key={f.text} className="flex items-center gap-3 text-slate-600 text-sm">
-                    <span>{f.icon}</span>
-                    <span className="font-medium">{f.text}</span>
+                    <span>{f.icon}</span><span className="font-medium">{f.text}</span>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
 
-        <div className="mt-4 bg-gradient-to-br from-navy to-navy-dark rounded-xl p-6 sm:p-8 text-white shadow-[var(--shadow-elevated)]">
-          <h3 className="text-lg font-bold text-center mb-5">Connected Intelligence</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center">
-            {connections.map((c) => (
-              <div key={c.from} className="flex flex-col items-center gap-1.5">
-                <span className="text-xl">{c.icon}</span>
-                <span className="font-semibold text-teal text-sm">{c.from}</span>
-                <svg className="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                <span className="text-slate-300 text-sm">{c.to}</span>
-              </div>
-            ))}
+        <FadeIn className="mt-4">
+          <div className="bg-gradient-to-br from-navy to-navy-dark rounded-xl p-6 sm:p-8 text-white shadow-[var(--shadow-elevated)]">
+            <h3 className="text-lg font-bold text-center mb-5">Connected Intelligence</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center">
+              {connections.map((c) => (
+                <div key={c.from} className="flex flex-col items-center gap-1.5">
+                  <span className="text-xl">{c.icon}</span>
+                  <span className="font-semibold text-teal text-sm">{c.from}</span>
+                  <svg className="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                  <span className="text-slate-300 text-sm">{c.to}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
@@ -194,26 +169,19 @@ function Features() {
   return (
     <section id="features" className="bg-white py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">
-            Everything Your Family Needs
-          </h2>
-          <p className="mt-3 text-base text-slate-500">
-            Nine powerful features. One unified platform.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">Everything Your Family Needs</h2>
+          <p className="mt-3 text-base text-slate-500">Nine powerful features. One unified platform.</p>
+        </FadeIn>
+        <AnimateOnScroll stagger className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f) => (
-            <div
-              key={f.title}
-              className="bg-gray-bg rounded-xl p-5 sm:p-6 border border-gray-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] hover:border-teal/20 transition-all"
-            >
+            <div key={f.title} className="animate-on-scroll card-hover bg-gray-bg rounded-xl p-5 sm:p-6 border border-gray-border shadow-[var(--shadow-card)] hover:border-teal/20">
               <span className="text-2xl">{f.icon}</span>
               <h3 className="mt-3 text-[15px] font-bold text-navy">{f.title}</h3>
               <p className="mt-1.5 text-sm text-slate-500 leading-relaxed">{f.desc}</p>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
@@ -232,22 +200,20 @@ function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-gray-bg py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
+        <FadeIn className="text-center max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">How It Works</h2>
           <p className="mt-3 text-base text-slate-500">Three simple steps to your family command center.</p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        </FadeIn>
+        <AnimateOnScroll stagger className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {steps.map((s) => (
-            <div key={s.num} className="text-center">
-              <div className="mx-auto w-14 h-14 bg-teal rounded-xl flex items-center justify-center text-white text-xl font-bold">
-                {s.num}
-              </div>
+            <div key={s.num} className="animate-on-scroll text-center">
+              <div className="mx-auto w-14 h-14 bg-teal rounded-xl flex items-center justify-center text-white text-xl font-bold">{s.num}</div>
               <span className="mt-4 block text-2xl">{s.icon}</span>
               <h3 className="mt-2 text-lg font-bold text-navy">{s.title}</h3>
               <p className="mt-1.5 text-sm text-slate-500 max-w-[240px] mx-auto">{s.desc}</p>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
@@ -268,31 +234,31 @@ function Replaces() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight text-center">
-          Replace 5 Apps With One
-        </h2>
+        <FadeIn className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">Replace 5 Apps With One</h2>
+        </FadeIn>
 
         <div className="mt-12 max-w-3xl mx-auto">
-          <div className="space-y-2">
+          <AnimateOnScroll stagger className="space-y-2">
             {apps.map((app) => (
-              <div key={app.name} className="flex items-center justify-between bg-slate-50 rounded-lg px-5 py-3 border border-gray-border">
+              <div key={app.name} className="animate-on-scroll flex items-center justify-between bg-slate-50 rounded-lg px-5 py-3 border border-gray-border">
                 <span className="text-sm font-medium text-slate-600">{app.name}</span>
                 <span className="text-sm text-slate-400 line-through">{app.cost}</span>
               </div>
             ))}
-          </div>
-          <div className="mt-3 text-center text-slate-400 font-bold text-lg">= $727\u2013$3,459/yr</div>
+          </AnimateOnScroll>
+          <FadeIn className="mt-3 text-center text-slate-400 font-bold text-lg">
+            <span>= $727\u2013$3,459/yr</span>
+          </FadeIn>
 
-          <div className="mt-5 bg-gradient-to-br from-navy to-navy-dark rounded-xl p-7 sm:p-8 text-center text-white shadow-[var(--shadow-elevated)]">
-            <div className="text-[11px] font-bold text-teal uppercase tracking-widest">VS</div>
-            <div className="mt-2 text-2xl sm:text-3xl font-bold">
-              FamilyOS <span className="text-teal">$149\u2013$399/yr</span>
+          <FadeIn className="mt-5">
+            <div className="bg-gradient-to-br from-navy to-navy-dark rounded-xl p-7 sm:p-8 text-center text-white shadow-[var(--shadow-elevated)]">
+              <div className="text-[11px] font-bold text-teal uppercase tracking-widest">VS</div>
+              <div className="mt-2 text-2xl sm:text-3xl font-bold">FamilyOS <span className="text-teal">$149\u2013$399/yr</span></div>
+              <div className="mt-1.5 text-sm text-slate-300">Save 50\u201390%</div>
+              <a href="#pricing" className="btn-press mt-5 inline-block bg-teal text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-teal-hover transition-all text-sm">See Pricing</a>
             </div>
-            <div className="mt-1.5 text-sm text-slate-300">Save 50\u201390%</div>
-            <a href="#pricing" className="mt-5 inline-block bg-teal text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-teal-hover transition-all text-sm">
-              See Pricing
-            </a>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>
@@ -313,19 +279,18 @@ function Pricing() {
   return (
     <section id="pricing" className="bg-gray-bg py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
+        <FadeIn className="text-center max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">Simple, Transparent Pricing</h2>
           <p className="mt-3 text-base text-slate-500">14-day free trial on every plan. No credit card required.</p>
-
           <div className="mt-7 inline-flex items-center bg-white rounded-full p-1 border border-gray-border shadow-[var(--shadow-card)]">
             <button onClick={() => setAnnual(false)} className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${!annual ? "bg-navy text-white" : "text-slate-500 hover:text-navy"}`}>Monthly</button>
             <button onClick={() => setAnnual(true)} className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${annual ? "bg-navy text-white" : "text-slate-500 hover:text-navy"}`}>Annual <span className="text-teal text-[11px] font-bold">Save 20%</span></button>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <AnimateOnScroll stagger className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {tiers.map((tier) => (
-            <div key={tier.name} className={`relative bg-white rounded-xl p-6 sm:p-7 flex flex-col transition-shadow ${tier.popular ? "border-2 border-teal shadow-[var(--shadow-elevated)] md:scale-[1.03]" : "border border-gray-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]"}`}>
+            <div key={tier.name} className={`animate-on-scroll card-hover relative bg-white rounded-xl p-6 sm:p-7 flex flex-col ${tier.popular ? "border-2 border-teal shadow-[var(--shadow-elevated)] md:scale-[1.03]" : "border border-gray-border shadow-[var(--shadow-card)]"}`}>
               {tier.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal text-white text-[11px] font-bold px-3.5 py-0.5 rounded-full">MOST POPULAR</div>}
               <h3 className="text-lg font-bold text-navy">{tier.name}</h3>
               <p className="mt-0.5 text-xs text-slate-400">{tier.audience}</p>
@@ -341,12 +306,10 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href={APP_URL} className={`mt-6 block text-center font-semibold py-2.5 rounded-lg text-sm transition-all ${tier.popular ? "bg-teal text-white hover:bg-teal-hover" : "bg-navy text-white hover:bg-navy-light"}`}>
-                Start Free Trial
-              </a>
+              <a href={APP_URL} className={`btn-press mt-6 block text-center font-semibold py-2.5 rounded-lg text-sm transition-all ${tier.popular ? "bg-teal text-white hover:bg-teal-hover" : "bg-navy text-white hover:bg-navy-light"}`}>Start Free Trial</a>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
@@ -368,25 +331,22 @@ function FAQ() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight text-center">
-          Frequently Asked Questions
-        </h2>
-        <div className="mt-10 space-y-2">
+        <FadeIn className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">Frequently Asked Questions</h2>
+        </FadeIn>
+        <AnimateOnScroll stagger className="mt-10 space-y-2">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-gray-border rounded-xl overflow-hidden bg-gray-bg/40">
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-bg transition-colors"
-              >
+            <div key={i} className="animate-on-scroll border border-gray-border rounded-xl overflow-hidden bg-gray-bg/40">
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-bg transition-colors">
                 <span className="font-semibold text-navy text-sm">{faq.q}</span>
-                <svg className={`w-4 h-4 text-slate-400 shrink-0 ml-4 transition-transform ${openIndex === i ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className={`w-4 h-4 text-slate-400 shrink-0 ml-4 transition-transform duration-200 ${openIndex === i ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               {openIndex === i && <div className="px-5 pb-4 text-sm text-slate-500 leading-relaxed">{faq.a}</div>}
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

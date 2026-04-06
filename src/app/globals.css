@@ -39,3 +39,87 @@ body {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* ================================================================== */
+/*  ANIMATIONS                                                        */
+/* ================================================================== */
+
+/* ---- Scroll-triggered fade-in ---- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children — each child delays slightly more */
+.stagger > .animate-on-scroll:nth-child(1) { transition-delay: 0ms; }
+.stagger > .animate-on-scroll:nth-child(2) { transition-delay: 80ms; }
+.stagger > .animate-on-scroll:nth-child(3) { transition-delay: 160ms; }
+.stagger > .animate-on-scroll:nth-child(4) { transition-delay: 240ms; }
+.stagger > .animate-on-scroll:nth-child(5) { transition-delay: 320ms; }
+.stagger > .animate-on-scroll:nth-child(6) { transition-delay: 400ms; }
+.stagger > .animate-on-scroll:nth-child(7) { transition-delay: 480ms; }
+.stagger > .animate-on-scroll:nth-child(8) { transition-delay: 560ms; }
+.stagger > .animate-on-scroll:nth-child(9) { transition-delay: 640ms; }
+
+/* ---- Hero entrance ---- */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-animate > * {
+  animation: hero-fade-up 0.7s ease-out both;
+}
+.hero-animate > *:nth-child(1) { animation-delay: 0ms; }
+.hero-animate > *:nth-child(2) { animation-delay: 100ms; }
+.hero-animate > *:nth-child(3) { animation-delay: 200ms; }
+.hero-animate > *:nth-child(4) { animation-delay: 300ms; }
+.hero-animate > *:nth-child(5) { animation-delay: 400ms; }
+
+/* ---- Float for hero screenshot ---- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ---- Card lift on hover ---- */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+}
+
+/* ---- Button press effect ---- */
+.btn-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-animate > * {
+    animation: none;
+  }
+  .animate-float {
+    animation: none;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+}
