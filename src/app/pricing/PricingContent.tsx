@@ -11,34 +11,45 @@ const APP_URL = "https://familyos-staging-production.up.railway.app";
 /* ------------------------------------------------------------------ */
 function PricingHero() {
   return (
-    <section className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1]">
+    <section className="bg-gradient-to-b from-navy to-navy-dark text-white">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20 text-center">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
           Simple, <span className="text-teal">Transparent</span> Pricing
         </h1>
-        <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-4 text-sm sm:text-base text-slate-300 max-w-lg mx-auto leading-relaxed">
           One platform that replaces 5 apps. Save 50&ndash;90% while getting
           more capability. Every plan includes a 14-day free trial.
         </p>
+      </div>
+    </section>
+  );
+}
 
-        {/* Portfolio screenshot */}
-        <div className="mt-12 sm:mt-14 relative mx-auto max-w-4xl">
-          <div className="rounded-t-xl overflow-hidden border border-white/10 shadow-2xl">
-            <div className="bg-slate-800 px-4 py-2.5 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-              <span className="ml-3 text-[11px] text-slate-400 bg-slate-700/60 rounded px-3 py-0.5">app.familyos.com/portfolio</span>
-            </div>
-            <Image
-              src="/images/hero-portfolio.jpg"
-              alt="FamilyOS Net Worth Dashboard — unified financial portfolio tracking with AI insights"
-              width={1200}
-              height={675}
-              className="w-full h-auto block"
-              priority
-            />
+/* Portfolio showcase — shown between comparison table and FAQ */
+function PortfolioShowcase() {
+  return (
+    <section className="bg-white py-12 sm:py-16">
+      <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
+        <h3 className="text-xl sm:text-2xl font-bold text-navy tracking-tight text-center mb-2">
+          See What You Get
+        </h3>
+        <p className="text-sm text-slate-500 text-center mb-8">
+          A unified view of your family&apos;s complete financial picture.
+        </p>
+        <div className="rounded-xl overflow-hidden border border-gray-border shadow-[var(--shadow-elevated)]">
+          <div className="bg-slate-100 px-4 py-2 flex items-center gap-2 border-b border-gray-border">
+            <span className="w-2 h-2 rounded-full bg-red-300" />
+            <span className="w-2 h-2 rounded-full bg-yellow-300" />
+            <span className="w-2 h-2 rounded-full bg-green-300" />
+            <span className="ml-3 text-[10px] text-slate-400 bg-white rounded px-2.5 py-0.5 border border-gray-border">app.familyos.com/portfolio</span>
           </div>
+          <Image
+            src="/images/hero-portfolio.jpg"
+            alt="FamilyOS Net Worth Dashboard — unified financial portfolio tracking with AI insights"
+            width={1200}
+            height={675}
+            className="w-full h-auto block"
+          />
         </div>
       </div>
     </section>
@@ -225,6 +236,7 @@ export default function PricingContent() {
       <PricingHero />
       <PricingTiers />
       <ComparisonTable />
+      <PortfolioShowcase />
       <PricingFAQ />
       <PricingCTA />
     </>

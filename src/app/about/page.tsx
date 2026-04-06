@@ -15,38 +15,18 @@ export const metadata: Metadata = {
 /* ------------------------------------------------------------------ */
 function AboutHero() {
   return (
-    <section className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1]">
+    <section className="bg-gradient-to-b from-navy to-navy-dark text-white">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20 text-center">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
           Built by a Family,
           <br />
           <span className="text-teal">for Families</span>
         </h1>
-        <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-4 text-sm sm:text-base text-slate-300 max-w-lg mx-auto leading-relaxed">
           FamilyOS was born from real-world frustration &mdash; and a conviction
           that every family deserves one intelligent platform to protect what
           matters most.
         </p>
-
-        {/* Dashboard preview */}
-        <div className="mt-12 sm:mt-14 relative mx-auto max-w-4xl">
-          <div className="rounded-t-xl overflow-hidden border border-white/10 shadow-2xl">
-            <div className="bg-slate-800 px-4 py-2.5 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-              <span className="ml-3 text-[11px] text-slate-400 bg-slate-700/60 rounded px-3 py-0.5">app.familyos.com</span>
-            </div>
-            <Image
-              src="/images/hero-dashboard.jpg"
-              alt="FamilyOS Dashboard — the product Gurmail built to solve his own family's needs"
-              width={1200}
-              height={675}
-              className="w-full h-auto block"
-              priority
-            />
-          </div>
-        </div>
       </div>
     </section>
   );

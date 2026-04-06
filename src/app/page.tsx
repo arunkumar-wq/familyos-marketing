@@ -13,48 +13,47 @@ const APP_URL = "https://familyos-staging-production.up.railway.app";
 function Hero() {
   return (
     <section id="home" className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24 sm:pt-32 text-center">
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[13px] font-medium px-4 py-1.5 rounded-full mb-8 border border-white/10">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-0 text-center">
+        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[13px] font-medium px-4 py-1.5 rounded-full mb-6 border border-white/10">
           <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
           AI-Powered Family Management
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1]">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
           Stop Paying the
           <br />
           <span className="text-teal">Fragmentation Tax</span>
         </h1>
-        <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-4 text-sm sm:text-base text-slate-300 max-w-lg mx-auto leading-relaxed">
           One intelligent platform for every family&apos;s documents, finances,
           and future. AI-powered. Bank-grade secure. Starting at $149/yr.
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
             href="#pricing"
-            className="bg-teal text-white font-semibold px-7 py-3 rounded-lg hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-[15px]"
+            className="bg-teal text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-sm"
           >
             Start Free Trial
           </a>
           <a
             href="#how-it-works"
-            className="border border-white/20 text-white font-semibold px-7 py-3 rounded-lg hover:bg-white/5 transition-all w-full sm:w-auto text-[15px]"
+            className="border border-white/20 text-white font-semibold px-7 py-2.5 rounded-lg hover:bg-white/5 transition-all w-full sm:w-auto text-sm"
           >
             Watch Demo
           </a>
         </div>
 
-        {/* Product screenshot */}
-        <div className="mt-14 sm:mt-16 relative mx-auto max-w-4xl">
-          <div className="rounded-t-xl overflow-hidden border border-white/10 shadow-2xl">
-            {/* Browser chrome bar */}
-            <div className="bg-slate-800 px-4 py-2.5 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-              <span className="ml-3 text-[11px] text-slate-400 bg-slate-700/60 rounded px-3 py-0.5">app.familyos.com</span>
+        {/* Product screenshot — clipped to show top portion only */}
+        <div className="mt-10 sm:mt-12 relative mx-auto max-w-4xl">
+          <div className="rounded-t-xl overflow-hidden border border-white/10 border-b-0 shadow-2xl">
+            <div className="bg-slate-800 px-4 py-2 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-red-400/80" />
+              <span className="w-2 h-2 rounded-full bg-yellow-400/80" />
+              <span className="w-2 h-2 rounded-full bg-green-400/80" />
+              <span className="ml-3 text-[10px] text-slate-400 bg-slate-700/60 rounded px-2.5 py-0.5">app.familyos.com</span>
             </div>
             <Image
               src="/images/hero-dashboard.jpg"
-              alt="FamilyOS Dashboard — unified family command center with net worth, documents, and AI alerts"
+              alt="FamilyOS Dashboard — unified family command center"
               width={1200}
               height={675}
               className="w-full h-auto block"
