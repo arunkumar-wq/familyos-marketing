@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | FamilyOS",
   },
   description:
-    "Stop paying the Fragmentation Tax. One intelligent platform for family documents, portfolio tracking, and estate planning.",
+    "FamilyOS is the unified AI-powered platform for family life management. Secure document vault, financial portfolio tracking, and connected intelligence — all in one app. Starting at $149/yr.",
 };
 
 export default function RootLayout({

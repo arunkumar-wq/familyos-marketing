@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Stop paying the Fragmentation Tax. One intelligent platform for family documents, portfolio tracking, and estate planning.",
+    "Meet Gurmail Singh, founder of FamilyOS. A serial entrepreneur with 20+ years of experience who built FamilyOS to solve his own family's document and financial management challenges.",
 };
 
 /* ------------------------------------------------------------------ */
