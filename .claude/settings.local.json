@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/My New Work/**)",
+      "Bash(python -m markitdown \"FamilyOS_Pitch_Deck v1.pptx\")",
+      "Bash(pip install:*)",
+      "Bash(npx create-next-app@latest familyos-marketing --typescript --tailwind --eslint --app --src-dir --no-import-alias --use-npm)"
+    ]
+  }
+}
