@@ -293,14 +293,14 @@ function Replaces() {
             ))}
           </AnimateOnScroll>
           <FadeIn className="mt-3 text-center text-slate-400 font-semibold">
-            <span>= $727\u2013$3,459/yr</span>
+            <span>= $727&ndash;$3,459/yr</span>
           </FadeIn>
 
           <FadeIn className="mt-5">
             <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-8 text-center text-white">
               <p className="text-[11px] font-semibold text-teal uppercase tracking-widest">Instead</p>
-              <p className="mt-2 text-2xl sm:text-3xl font-bold">FamilyOS <span className="text-teal">$149\u2013$399/yr</span></p>
-              <p className="mt-1.5 text-sm text-slate-400">Save 50\u201390% every year</p>
+              <p className="mt-2 text-2xl sm:text-3xl font-bold">FamilyOS <span className="text-teal">$149&ndash;$399/yr</span></p>
+              <p className="mt-1.5 text-sm text-slate-400">Save 50&ndash;90% every year</p>
               <a href="#pricing" className="btn-press mt-5 inline-block bg-teal text-white font-medium px-6 py-2.5 rounded-full hover:bg-teal-hover transition-all text-sm">
                 See pricing
               </a>
