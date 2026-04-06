@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const APP_URL = "https://familyos-staging-production.up.railway.app";
@@ -11,7 +12,7 @@ const APP_URL = "https://familyos-staging-production.up.railway.app";
 function PricingHero() {
   return (
     <section className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1]">
           Simple, <span className="text-teal">Transparent</span> Pricing
         </h1>
@@ -19,6 +20,26 @@ function PricingHero() {
           One platform that replaces 5 apps. Save 50&ndash;90% while getting
           more capability. Every plan includes a 14-day free trial.
         </p>
+
+        {/* Portfolio screenshot */}
+        <div className="mt-12 sm:mt-14 relative mx-auto max-w-4xl">
+          <div className="rounded-t-xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="bg-slate-800 px-4 py-2.5 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+              <span className="ml-3 text-[11px] text-slate-400 bg-slate-700/60 rounded px-3 py-0.5">app.familyos.com/portfolio</span>
+            </div>
+            <Image
+              src="/images/hero-portfolio.jpg"
+              alt="FamilyOS Net Worth Dashboard — unified financial portfolio tracking with AI insights"
+              width={1200}
+              height={675}
+              className="w-full h-auto block"
+              priority
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -12,7 +13,7 @@ const APP_URL = "https://familyos-staging-production.up.railway.app";
 function Hero() {
   return (
     <section id="home" className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 text-center">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24 sm:pt-32 text-center">
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[13px] font-medium px-4 py-1.5 rounded-full mb-8 border border-white/10">
           <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
           AI-Powered Family Management
@@ -39,6 +40,27 @@ function Hero() {
           >
             Watch Demo
           </a>
+        </div>
+
+        {/* Product screenshot */}
+        <div className="mt-14 sm:mt-16 relative mx-auto max-w-4xl">
+          <div className="rounded-t-xl overflow-hidden border border-white/10 shadow-2xl">
+            {/* Browser chrome bar */}
+            <div className="bg-slate-800 px-4 py-2.5 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+              <span className="ml-3 text-[11px] text-slate-400 bg-slate-700/60 rounded px-3 py-0.5">app.familyos.com</span>
+            </div>
+            <Image
+              src="/images/hero-dashboard.jpg"
+              alt="FamilyOS Dashboard — unified family command center with net worth, documents, and AI alerts"
+              width={1200}
+              height={675}
+              className="w-full h-auto block"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -39,7 +39,10 @@
       "Bash(__NEW_LINE_14dc7acb738bedef__ curl:*)",
       "Bash(WORKSPACE_ID=\"14a53021-e0ed-4cf4-a8c3-aaa535172127\")",
       "Bash(__NEW_LINE_2c0136999bc826a1__ curl:*)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://web-production-f406.up.railway.app/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://web-production-f406.up.railway.app/)",
+      "Bash(cp \"/c/My New Work/WhatsApp Image 2026-04-01 at 22.26.33 \\(1\\).jpeg\" \"/c/My New Work/familyos-marketing/public/images/hero-dashboard.jpg\")",
+      "Bash(cp \"/c/My New Work/WhatsApp Image 2026-04-01 at 22.26.32.jpeg\" \"/c/My New Work/familyos-marketing/public/images/hero-documents.jpg\")",
+      "Bash(cp \"/c/My New Work/WhatsApp Image 2026-04-01 at 22.26.33.jpeg\" \"/c/My New Work/familyos-marketing/public/images/hero-portfolio.jpg\")"
     ]
   }
 }
