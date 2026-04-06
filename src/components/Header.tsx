@@ -16,11 +16,11 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 text-navy font-bold text-xl">
-          <span className="w-8 h-8 bg-navy rounded-lg flex items-center justify-center text-white text-sm font-bold">
+        <Link href="/" className="flex items-center gap-2.5 text-navy font-bold text-xl tracking-tight">
+          <span className="w-8 h-8 bg-teal rounded-lg flex items-center justify-center text-white text-sm font-bold">
             F
           </span>
           FamilyOS
@@ -32,7 +32,7 @@ export default function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-gray-600 hover:text-navy transition-colors"
+              className="text-sm font-medium text-slate-500 hover:text-navy transition-colors"
             >
               {l.label}
             </Link>
@@ -43,13 +43,13 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-3">
           <a
             href={APP_URL}
-            className="text-sm font-medium text-gray-700 hover:text-navy transition-colors"
+            className="text-sm font-medium text-slate-600 hover:text-navy transition-colors"
           >
             Login
           </a>
           <Link
             href="/pricing"
-            className="bg-orange text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-orange-hover transition-colors"
+            className="bg-teal text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-teal-hover transition-colors shadow-sm"
           >
             Start Free Trial
           </Link>
@@ -57,7 +57,7 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-gray-600"
+          className="md:hidden p-2 text-slate-500"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -75,24 +75,24 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white border-t border-gray-border px-4 py-4 space-y-3">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="block text-sm font-medium text-gray-600 hover:text-navy"
+              className="block text-sm font-medium text-slate-600 hover:text-navy py-1"
               onClick={() => setMenuOpen(false)}
             >
               {l.label}
             </Link>
           ))}
-          <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">
-            <a href={APP_URL} className="text-sm font-medium text-gray-700">
+          <div className="pt-3 border-t border-gray-border flex flex-col gap-2">
+            <a href={APP_URL} className="text-sm font-medium text-slate-600">
               Login
             </a>
             <Link
               href="/pricing"
-              className="bg-orange text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center hover:bg-orange-hover transition-colors"
+              className="bg-teal text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center hover:bg-teal-hover transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Start Free Trial
