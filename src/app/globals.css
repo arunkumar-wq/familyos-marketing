@@ -1,20 +1,41 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* ---- Primary palette ---- */
   --color-navy: #1B2B4B;
   --color-navy-light: #243757;
   --color-navy-dark: #0F1D32;
   --color-teal: #0D9488;
   --color-teal-hover: #0B8276;
-  --color-teal-light: #CCFBF1;
+  --color-teal-light: #F0FDFA;
   --color-orange: #F97316;
   --color-orange-hover: #EA6C10;
-  --color-gray-bg: #F1F5F9;
+
+  /* ---- Surfaces ---- */
+  --color-gray-bg: #F8FAFC;
   --color-gray-border: #E2E8F0;
+
+  /* ---- Shadows ---- */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-elevated: 0 10px 25px -3px rgb(0 0 0 / 0.08), 0 4px 10px -4px rgb(0 0 0 / 0.04);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   color: #1E293B;
+  line-height: 1.6;
+}
+
+/* Smooth focus rings */
+*:focus-visible {
+  outline: 2px solid #0D9488;
+  outline-offset: 2px;
+  border-radius: 4px;
 }

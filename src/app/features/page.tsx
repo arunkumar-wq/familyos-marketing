@@ -14,15 +14,14 @@ export const metadata: Metadata = {
 /* ------------------------------------------------------------------ */
 function FeaturesHero() {
   return (
-    <section className="relative bg-navy text-white overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-dark to-navy opacity-90" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+    <section className="relative bg-gradient-to-b from-navy to-navy-dark text-white overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
+        <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1]">
           Powerful Features for
           <br />
           <span className="text-teal">Every Family</span>
         </h1>
-        <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
           Two intelligent pillars working together to organize, protect, and
           grow everything your family has built.
         </p>
@@ -35,27 +34,17 @@ function FeaturesHero() {
 /*  FEATURE ROW                                                       */
 /* ------------------------------------------------------------------ */
 function FeatureRow({
-  icon,
-  title,
-  description,
-  reverse,
+  icon, title, description, reverse,
 }: {
-  icon: string;
-  title: string;
-  description: string;
-  reverse?: boolean;
+  icon: string; title: string; description: string; reverse?: boolean;
 }) {
   return (
-    <div
-      className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${
-        reverse ? "lg:flex-row-reverse" : ""
-      }`}
-    >
-      <div className="flex-1">
-        <h3 className="text-xl sm:text-2xl font-bold text-navy">{title}</h3>
-        <p className="mt-4 text-slate-500 leading-relaxed">{description}</p>
+    <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-12 ${reverse ? "md:flex-row-reverse" : ""}`}>
+      <div className="flex-1 max-w-xl">
+        <h3 className="text-lg sm:text-xl font-bold text-navy">{title}</h3>
+        <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">{description}</p>
       </div>
-      <div className="shrink-0 w-20 h-20 bg-teal/5 border border-teal/10 rounded-2xl flex items-center justify-center text-4xl">
+      <div className="shrink-0 w-16 h-16 bg-teal/5 border border-teal/10 rounded-xl flex items-center justify-center text-3xl">
         {icon}
       </div>
     </div>
@@ -63,33 +52,32 @@ function FeatureRow({
 }
 
 /* ------------------------------------------------------------------ */
-/*  PILLAR 1 — DOCUMENT VAULT                                         */
+/*  PILLAR 1                                                          */
 /* ------------------------------------------------------------------ */
 function DocumentVault() {
   const features = [
-    { icon: "📥", title: "AI Auto-Filing", description: "Upload any document and our AI instantly classifies it, extracts key data points like dates, names, and policy numbers, then files it into the correct category automatically. No manual sorting ever again." },
-    { icon: "🔔", title: "Smart Reminders", description: "Never miss a renewal or expiration again. FamilyOS proactively alerts you about passport expirations, insurance renewals, license deadlines, and other critical dates before they sneak up on you." },
-    { icon: "🔍", title: "Family Profile Audit", description: "Our AI continuously scans your family's document profile and surfaces gaps — missing wills, outdated beneficiaries, expired insurance policies — so you can take action before it's too late." },
-    { icon: "👥", title: "Role-Based Sharing", description: "Share documents with family members, attorneys, financial advisors, or accountants with granular access controls. Every action is logged in a full audit trail you can review anytime." },
-    { icon: "🚨", title: "Emergency Access", description: "Configure a dead-man's-switch that automatically grants designated family members or trusted contacts access to critical documents if you're unable to respond for a configurable period." },
+    { icon: "📥", title: "AI Auto-Filing", description: "Upload any document and our AI instantly classifies it, extracts key data points like dates, names, and policy numbers, then files it into the correct category automatically." },
+    { icon: "🔔", title: "Smart Reminders", description: "Never miss a renewal or expiration again. FamilyOS proactively alerts you about passport expirations, insurance renewals, and other critical dates." },
+    { icon: "🔍", title: "Family Profile Audit", description: "Our AI continuously scans your family\u2019s document profile and surfaces gaps \u2014 missing wills, outdated beneficiaries, expired insurance policies." },
+    { icon: "👥", title: "Role-Based Sharing", description: "Share documents with family members, attorneys, financial advisors, or accountants with granular access controls and full audit trail." },
+    { icon: "🚨", title: "Emergency Access", description: "Configure a dead-man\u2019s-switch that automatically grants designated family members access to critical documents if you\u2019re unable to respond." },
   ];
 
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+    <section className="bg-white py-20 sm:py-24">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
             <span>🔒</span> Pillar 1
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">
             Intelligent Document Vault
           </h2>
-          <p className="mt-4 text-lg text-slate-500">
-            AI-powered storage that doesn&apos;t just hold your documents — it
-            understands them.
+          <p className="mt-3 text-base text-slate-500">
+            AI-powered storage that doesn&apos;t just hold your documents &mdash; it understands them.
           </p>
         </div>
-        <div className="space-y-16">
+        <div className="space-y-12">
           {features.map((f, i) => (
             <FeatureRow key={f.title} icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
           ))}
@@ -100,33 +88,32 @@ function DocumentVault() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  PILLAR 2 — FINANCIAL INTELLIGENCE                                 */
+/*  PILLAR 2                                                          */
 /* ------------------------------------------------------------------ */
 function FinancialIntelligence() {
   const features = [
-    { icon: "📊", title: "Net Worth Dashboard", description: "See every asset and liability in one unified, real-time view. Investment accounts, real estate, crypto, savings, 401(k)s, 529 plans — all aggregated with automatic updates across any institution." },
-    { icon: "🤖", title: "AI Portfolio Insights", description: "Get plain-English analysis of your portfolio allocation, risk exposure, and opportunities. Our AI translates complex financial data into actionable recommendations you can actually understand." },
-    { icon: "⚡", title: "Proactive Alerts", description: "Stay ahead of market events, rebalancing opportunities, and fee optimization. FamilyOS monitors your portfolio 24/7 and alerts you when action is needed — not after it's too late." },
-    { icon: "🌍", title: "Multi-Currency Support", description: "Track global assets in any currency, across any institution worldwide. Whether you hold property in London, investments in Tokyo, or crypto everywhere — FamilyOS unifies it all." },
-    { icon: "👨\u200d👩\u200d👧\u200d👦", title: "Family Planning Views", description: "Shared financial dashboards with built-in privacy controls. See the family's complete financial picture while keeping individual accounts private when needed." },
+    { icon: "📊", title: "Net Worth Dashboard", description: "See every asset and liability in one unified, real-time view. Investment accounts, real estate, crypto, savings \u2014 all aggregated across any institution." },
+    { icon: "🤖", title: "AI Portfolio Insights", description: "Get plain-English analysis of your portfolio allocation, risk exposure, and opportunities. Complex financial data made actionable." },
+    { icon: "⚡", title: "Proactive Alerts", description: "Stay ahead of market events, rebalancing opportunities, and fee optimization. FamilyOS monitors your portfolio 24/7." },
+    { icon: "🌍", title: "Multi-Currency Support", description: "Track global assets in any currency, across any institution worldwide. Property in London, investments in Tokyo \u2014 FamilyOS unifies it all." },
+    { icon: "👨\u200d👩\u200d👧\u200d👦", title: "Family Planning Views", description: "Shared financial dashboards with built-in privacy controls. See the complete family picture while keeping individual accounts private." },
   ];
 
   return (
-    <section className="bg-gray-bg py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+    <section className="bg-gray-bg py-20 sm:py-24">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
             <span>💰</span> Pillar 2
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">
             Financial Portfolio Intelligence
           </h2>
-          <p className="mt-4 text-lg text-slate-500">
-            Your family&apos;s complete financial picture, powered by AI that
-            speaks plain English.
+          <p className="mt-3 text-base text-slate-500">
+            Your family&apos;s complete financial picture, powered by AI that speaks plain English.
           </p>
         </div>
-        <div className="space-y-16">
+        <div className="space-y-12">
           {features.map((f, i) => (
             <FeatureRow key={f.title} icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
           ))}
@@ -141,38 +128,32 @@ function FinancialIntelligence() {
 /* ------------------------------------------------------------------ */
 function ConnectedIntelligence() {
   const connections = [
-    { icon: "🏥", from: "Insurance policies", to: "Automated coverage analysis", desc: "AI reads your insurance docs and cross-references them with your assets to identify coverage gaps." },
+    { icon: "🏥", from: "Insurance policies", to: "Coverage analysis", desc: "AI reads your insurance docs and cross-references them with your assets to identify coverage gaps." },
     { icon: "🏠", from: "Property deeds", to: "Real-time valuations", desc: "Your property documents are linked to live market data for always-current home valuations." },
     { icon: "📜", from: "Estate documents", to: "Beneficiary tracking", desc: "Wills, trusts, and beneficiary designations are cross-checked against your financial accounts." },
-    { icon: "🧾", from: "Tax records", to: "Linked financial accounts", desc: "Tax documents are automatically connected to the accounts and assets they reference." },
+    { icon: "🧾", from: "Tax records", to: "Financial accounts", desc: "Tax documents are automatically connected to the accounts and assets they reference." },
   ];
 
   return (
-    <section className="bg-gradient-to-br from-navy to-navy-dark text-white py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/10">
+    <section className="bg-gradient-to-br from-navy to-navy-dark text-white py-20 sm:py-24">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5 border border-white/10">
             <span>🔗</span> The Connective Tissue
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Where Documents Meet Finances
-          </h2>
-          <p className="mt-4 text-lg text-slate-300">
-            Cross-pillar intelligence that no fragmented tool stack can match.
-          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Where Documents Meet Finances</h2>
+          <p className="mt-3 text-base text-slate-300">Cross-pillar intelligence that no fragmented tool stack can match.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {connections.map((c) => (
-            <div key={c.from} className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-colors">
-              <span className="text-3xl">{c.icon}</span>
-              <div className="mt-4 flex items-center gap-3">
+            <div key={c.from} className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/[0.07] transition-colors">
+              <span className="text-2xl">{c.icon}</span>
+              <div className="mt-3 flex items-center gap-2 text-sm">
                 <span className="font-semibold text-teal">{c.from}</span>
-                <svg className="w-5 h-5 text-slate-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                <svg className="w-4 h-4 text-slate-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 <span className="text-slate-300">{c.to}</span>
               </div>
-              <p className="mt-3 text-sm text-slate-400 leading-relaxed">{c.desc}</p>
+              <p className="mt-2 text-[13px] text-slate-400 leading-relaxed">{c.desc}</p>
             </div>
           ))}
         </div>
@@ -186,20 +167,19 @@ function ConnectedIntelligence() {
 /* ------------------------------------------------------------------ */
 function CTA() {
   return (
-    <section className="bg-gray-bg py-20 sm:py-28">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-navy tracking-tight">
+    <section className="bg-gray-bg py-20 sm:py-24">
+      <div className="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight">
           Ready to organize your family&apos;s future?
         </h2>
-        <p className="mt-4 text-lg text-slate-500">
+        <p className="mt-3 text-base text-slate-500">
           Join families who have replaced 5 apps with one intelligent platform.
-          Start your 14-day free trial today.
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/pricing" className="bg-teal text-white font-semibold px-8 py-3.5 rounded-lg text-lg hover:bg-teal-hover transition-all shadow-lg shadow-teal/20 w-full sm:w-auto">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Link href="/pricing" className="bg-teal text-white font-semibold px-7 py-3 rounded-lg hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-[15px]">
             Start Free Trial
           </Link>
-          <Link href="/pricing" className="border border-navy/20 text-navy font-semibold px-8 py-3.5 rounded-lg text-lg hover:border-navy/40 transition-colors w-full sm:w-auto">
+          <Link href="/pricing" className="border border-navy/20 text-navy font-semibold px-7 py-3 rounded-lg hover:border-navy/40 transition-colors w-full sm:w-auto text-[15px]">
             View Pricing
           </Link>
         </div>
@@ -208,8 +188,6 @@ function CTA() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  PAGE                                                              */
 /* ------------------------------------------------------------------ */
 export default function FeaturesPage() {
   return (

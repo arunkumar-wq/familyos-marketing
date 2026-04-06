@@ -17,9 +17,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 text-navy font-bold text-xl tracking-tight">
+        <Link href="/" className="flex items-center gap-2.5 text-navy font-bold text-lg tracking-tight">
           <span className="w-8 h-8 bg-teal rounded-lg flex items-center justify-center text-white text-sm font-bold">
             F
           </span>
@@ -27,12 +27,12 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-slate-500 hover:text-navy transition-colors"
+              className="text-[13px] font-medium text-slate-500 hover:text-navy transition-colors"
             >
               {l.label}
             </Link>
@@ -40,34 +40,34 @@ export default function Header() {
         </nav>
 
         {/* Desktop buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-4">
           <a
             href={APP_URL}
-            className="text-sm font-medium text-slate-600 hover:text-navy transition-colors"
+            className="text-[13px] font-medium text-slate-500 hover:text-navy transition-colors"
           >
             Login
           </a>
           <Link
             href="/pricing"
-            className="bg-teal text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-teal-hover transition-colors shadow-sm"
+            className="bg-teal text-white text-[13px] font-semibold px-4 py-2 rounded-lg hover:bg-teal-hover transition-colors"
           >
             Start Free Trial
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — 44px tap target */}
         <button
-          className="md:hidden p-2 text-slate-500"
+          className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 rounded-lg text-slate-500 hover:bg-gray-bg transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
         </button>
@@ -75,24 +75,29 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-border px-4 py-4 space-y-3">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="block text-sm font-medium text-slate-600 hover:text-navy py-1"
-              onClick={() => setMenuOpen(false)}
+        <div className="md:hidden bg-white border-t border-gray-border px-5 pb-5 pt-2">
+          <nav className="space-y-1">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="block text-sm font-medium text-slate-600 hover:text-navy hover:bg-gray-bg rounded-lg px-3 py-2.5 transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="mt-3 pt-3 border-t border-gray-border space-y-2">
+            <a
+              href={APP_URL}
+              className="block text-sm font-medium text-slate-600 px-3 py-2.5"
             >
-              {l.label}
-            </Link>
-          ))}
-          <div className="pt-3 border-t border-gray-border flex flex-col gap-2">
-            <a href={APP_URL} className="text-sm font-medium text-slate-600">
               Login
             </a>
             <Link
               href="/pricing"
-              className="bg-teal text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center hover:bg-teal-hover transition-colors"
+              className="block bg-teal text-white text-sm font-semibold px-4 py-2.5 rounded-lg text-center hover:bg-teal-hover transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Start Free Trial
