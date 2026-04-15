@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,111 +7,118 @@ import AnimateOnScroll, { FadeIn } from "@/components/AnimateOnScroll";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Explore FamilyOS features: AI auto-filing document vault, net worth dashboard, portfolio insights, smart reminders, role-based sharing, and cross-pillar intelligence that connects documents to finances.",
+    "Explore LINIO features: AI auto-filing document vault, net worth dashboard, portfolio insights, smart reminders, role-based sharing, and cross-pillar intelligence that connects documents to finances.",
 };
 
-/* ------------------------------------------------------------------ */
+const APP_URL = "https://familyos-staging-production.up.railway.app";
+
+/* ================================================================== */
 /*  HERO                                                              */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function FeaturesHero() {
   return (
-    <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-[-0.03em] leading-[1.08]">
-          Powerful Features for
-          <br />
-          <span className="text-teal">Every Family</span>
+    <section className="bg-white pt-14 pb-10 sm:pt-20 sm:pb-16">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 text-center">
+        <div className="eyebrow mb-4">Features</div>
+        <h1 className="font-display text-[28px] sm:text-[48px] lg:text-[56px] leading-[1.2] sm:leading-[1.15] text-[var(--color-text-1)] font-normal mb-5 max-w-3xl mx-auto">
+          Powerful tools for{" "}
+          <em className="italic text-[var(--color-teal-dark)]">every family.</em>
         </h1>
-        <p className="mt-4 text-sm sm:text-base text-slate-400 max-w-lg mx-auto leading-relaxed">
-          Two intelligent pillars working together to organize, protect, and
-          grow everything your family has built.
+        <p className="text-[17px] text-[var(--color-text-2)] leading-[1.65] max-w-[560px] mx-auto">
+          Two intelligent pillars working together to organize, protect, and grow everything your
+          family has built.
         </p>
       </div>
     </section>
   );
 }
 
-/* Product showcase — documents screenshot in its own section */
-function ProductShowcase() {
-  return (
-    <section className="bg-white py-12 sm:py-16">
-      <div className="max-w-4xl mx-auto px-5 sm:px-6">
-        <div className="rounded-xl overflow-hidden border border-slate-200 shadow-[var(--shadow-elevated)]">
-          <div className="bg-slate-100 px-4 py-2 flex items-center gap-2 border-b border-slate-200">
-            <span className="w-2 h-2 rounded-full bg-red-300" />
-            <span className="w-2 h-2 rounded-full bg-yellow-300" />
-            <span className="w-2 h-2 rounded-full bg-green-300" />
-            <span className="ml-3 text-[10px] text-slate-400 bg-white rounded px-2.5 py-0.5 border border-slate-100">app.familyos.com/documents</span>
-          </div>
-          <Image
-            src="/images/hero-documents.jpg"
-            alt="FamilyOS Document Vault — AI-powered document management with auto-filing and smart categories"
-            width={1200}
-            height={675}
-            className="w-full h-auto block"
-            priority
-          />
-        </div>
-        <p className="mt-4 text-center text-xs text-slate-400">
-          The Intelligent Document Vault — AI auto-filing across 12 categories
-        </p>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  FEATURE ROW                                                       */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function FeatureRow({
-  icon, title, description, reverse,
+  icon, iconBg, iconColor, title, description, reverse,
 }: {
-  icon: string; title: string; description: string; reverse?: boolean;
+  icon: React.ReactNode;
+  iconBg: string;
+  iconColor: string;
+  title: string;
+  description: string;
+  reverse?: boolean;
 }) {
   return (
-    <div className={`flex flex-col md:flex-row items-start gap-6 md:gap-12 ${reverse ? "md:flex-row-reverse" : ""}`}>
-      <div className="flex-1 max-w-xl">
-        <h3 className="text-lg sm:text-xl font-bold text-slate-900">{title}</h3>
-        <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">{description}</p>
-      </div>
-      <div className="shrink-0 w-16 h-16 bg-teal/5 border border-teal/10 rounded-xl flex items-center justify-center text-3xl">
+    <div className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-5 md:gap-8 items-start">
+      <div
+        className={`w-16 h-16 rounded-[16px] flex items-center justify-center shrink-0 ${reverse ? "md:order-2" : ""}`}
+        style={{ background: iconBg, color: iconColor }}
+      >
         {icon}
+      </div>
+      <div className={reverse ? "md:order-1" : ""}>
+        <h3 className="font-display text-[22px] sm:text-[26px] font-normal text-[var(--color-text-1)] leading-[1.25] mb-3">
+          {title}
+        </h3>
+        <p className="text-[15px] sm:text-base text-[var(--color-text-2)] leading-[1.65]">
+          {description}
+        </p>
       </div>
     </div>
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  PILLAR 1                                                          */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/*  PILLAR 1 — DOCUMENT VAULT                                         */
+/* ================================================================== */
 function DocumentVault() {
   const features = [
-    { icon: "📥", title: "AI Auto-Filing", description: "Upload any document and our AI instantly classifies it, extracts key data points like dates, names, and policy numbers, then files it into the correct category automatically." },
-    { icon: "🔔", title: "Smart Reminders", description: "Never miss a renewal or expiration again. FamilyOS proactively alerts you about passport expirations, insurance renewals, and other critical dates." },
-    { icon: "🔍", title: "Family Profile Audit", description: "Our AI continuously scans your family\u2019s document profile and surfaces gaps \u2014 missing wills, outdated beneficiaries, expired insurance policies." },
-    { icon: "👥", title: "Role-Based Sharing", description: "Share documents with family members, attorneys, financial advisors, or accountants with granular access controls and full audit trail." },
-    { icon: "🚨", title: "Emergency Access", description: "Configure a dead-man\u2019s-switch that automatically grants designated family members access to critical documents if you\u2019re unable to respond." },
+    {
+      iconBg: "var(--color-teal-light)", iconColor: "#0F6E56",
+      title: "AI Auto-Filing",
+      description: "Upload any document and our AI instantly classifies it, extracts key data points like dates, names, and policy numbers, then files it into the correct category automatically.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>,
+    },
+    {
+      iconBg: "#E6F1FB", iconColor: "#2E6BAC",
+      title: "Smart Reminders",
+      description: "Never miss a renewal or expiration again. LINIO proactively alerts you about passport expirations, insurance renewals, and other critical dates.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>,
+    },
+    {
+      iconBg: "var(--color-amber-light)", iconColor: "#D4872E",
+      title: "Family Profile Audit",
+      description: "Our AI continuously scans your family\u2019s document profile and surfaces gaps \u2014 missing wills, outdated beneficiaries, expired insurance policies.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+    },
+    {
+      iconBg: "#EEEDFE", iconColor: "#534AB7",
+      title: "Role-Based Sharing",
+      description: "Share documents with family members, attorneys, financial advisors, or accountants with granular access controls and full audit trail.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+    },
+    {
+      iconBg: "var(--color-red-light)", iconColor: "#E74C3C",
+      title: "Emergency Access",
+      description: "Configure a dead-man\u2019s-switch that automatically grants designated family members access to critical documents if you\u2019re unable to respond.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+    },
   ];
 
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="max-w-5xl mx-auto px-5 sm:px-6">
-        <FadeIn className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
-            <span>🔒</span> Pillar 1
-          </div>
-          <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3">Documents</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+    <section className="py-14 sm:py-24" style={{ background: "var(--color-surface)" }}>
+      <div className="max-w-[1040px] mx-auto px-5 sm:px-6">
+        <FadeIn className="text-center max-w-[640px] mx-auto mb-14">
+          <div className="eyebrow mb-3">Pillar 1 · Documents</div>
+          <h2 className="font-display text-[24px] sm:text-[40px] font-normal leading-[1.2] text-[var(--color-text-1)] mb-4">
             Intelligent Document Vault
           </h2>
-          <p className="mt-3 text-base text-slate-500">
+          <p className="text-[17px] text-[var(--color-text-2)] leading-[1.6]">
             AI-powered storage that doesn&apos;t just hold your documents &mdash; it understands them.
           </p>
         </FadeIn>
         <AnimateOnScroll stagger className="space-y-12">
-          {features.map((f, i) => (
-            <div key={f.title} className="animate-on-scroll">
-              <FeatureRow icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
+          {features.map((f) => (
+            <div key={f.title} className="animate-on-scroll bg-white border border-[var(--color-border)] rounded-[16px] p-6 sm:p-8" style={{ boxShadow: "var(--shadow-sm)" }}>
+              <FeatureRow icon={f.icon} iconBg={f.iconBg} iconColor={f.iconColor} title={f.title} description={f.description} />
             </div>
           ))}
         </AnimateOnScroll>
@@ -121,37 +127,59 @@ function DocumentVault() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  PILLAR 2                                                          */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/*  PILLAR 2 — FINANCIAL                                              */
+/* ================================================================== */
 function FinancialIntelligence() {
   const features = [
-    { icon: "📊", title: "Net Worth Dashboard", description: "See every asset and liability in one unified, real-time view. Investment accounts, real estate, crypto, savings \u2014 all aggregated across any institution." },
-    { icon: "🤖", title: "AI Portfolio Insights", description: "Get plain-English analysis of your portfolio allocation, risk exposure, and opportunities. Complex financial data made actionable." },
-    { icon: "⚡", title: "Proactive Alerts", description: "Stay ahead of market events, rebalancing opportunities, and fee optimization. FamilyOS monitors your portfolio 24/7." },
-    { icon: "🌍", title: "Multi-Currency Support", description: "Track global assets in any currency, across any institution worldwide. Property in London, investments in Tokyo \u2014 FamilyOS unifies it all." },
-    { icon: "👨\u200d👩\u200d👧\u200d👦", title: "Family Planning Views", description: "Shared financial dashboards with built-in privacy controls. See the complete family picture while keeping individual accounts private." },
+    {
+      iconBg: "var(--color-teal-light)", iconColor: "#0F6E56",
+      title: "Net Worth Dashboard",
+      description: "See every asset and liability in one unified, real-time view. Investment accounts, real estate, crypto, savings \u2014 all aggregated across any institution.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>,
+    },
+    {
+      iconBg: "var(--color-amber-light)", iconColor: "#D4872E",
+      title: "AI Portfolio Insights",
+      description: "Get plain-English analysis of your portfolio allocation, risk exposure, and opportunities. Complex financial data made actionable.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 2L14 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z"/></svg>,
+    },
+    {
+      iconBg: "#FEF0EF", iconColor: "#E74C3C",
+      title: "Proactive Alerts",
+      description: "Stay ahead of market events, rebalancing opportunities, and fee optimization. LINIO monitors your portfolio 24/7.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>,
+    },
+    {
+      iconBg: "#E6F1FB", iconColor: "#2E6BAC",
+      title: "Multi-Currency Support",
+      description: "Track global assets in any currency, across any institution worldwide. Property in London, investments in Tokyo \u2014 LINIO unifies it all.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
+    },
+    {
+      iconBg: "var(--color-green-light)", iconColor: "#1E7B3E",
+      title: "Family Planning Views",
+      description: "Shared financial dashboards with built-in privacy controls. See the complete family picture while keeping individual accounts private.",
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+    },
   ];
 
   return (
-    <section className="bg-slate-50 py-20 sm:py-28">
-      <div className="max-w-5xl mx-auto px-5 sm:px-6">
-        <FadeIn className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-teal/5 text-teal border border-teal/10 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
-            <span>💰</span> Pillar 2
-          </div>
-          <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3">Finances</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+    <section className="py-14 sm:py-24 bg-white">
+      <div className="max-w-[1040px] mx-auto px-5 sm:px-6">
+        <FadeIn className="text-center max-w-[640px] mx-auto mb-14">
+          <div className="eyebrow mb-3">Pillar 2 · Finances</div>
+          <h2 className="font-display text-[24px] sm:text-[40px] font-normal leading-[1.2] text-[var(--color-text-1)] mb-4">
             Financial Portfolio Intelligence
           </h2>
-          <p className="mt-3 text-base text-slate-500">
+          <p className="text-[17px] text-[var(--color-text-2)] leading-[1.6]">
             Your family&apos;s complete financial picture, powered by AI that speaks plain English.
           </p>
         </FadeIn>
         <AnimateOnScroll stagger className="space-y-12">
-          {features.map((f, i) => (
-            <div key={f.title} className="animate-on-scroll">
-              <FeatureRow icon={f.icon} title={f.title} description={f.description} reverse={i % 2 === 1} />
+          {features.map((f) => (
+            <div key={f.title} className="animate-on-scroll bg-white border border-[var(--color-border)] rounded-[16px] p-6 sm:p-8" style={{ boxShadow: "var(--shadow-sm)" }}>
+              <FeatureRow icon={f.icon} iconBg={f.iconBg} iconColor={f.iconColor} title={f.title} description={f.description} />
             </div>
           ))}
         </AnimateOnScroll>
@@ -160,66 +188,84 @@ function FinancialIntelligence() {
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  CONNECTED INTELLIGENCE                                            */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function ConnectedIntelligence() {
   const connections = [
-    { icon: "🏥", from: "Insurance policies", to: "Coverage analysis", desc: "AI reads your insurance docs and cross-references them with your assets to identify coverage gaps." },
-    { icon: "🏠", from: "Property deeds", to: "Real-time valuations", desc: "Your property documents are linked to live market data for always-current home valuations." },
-    { icon: "📜", from: "Estate documents", to: "Beneficiary tracking", desc: "Wills, trusts, and beneficiary designations are cross-checked against your financial accounts." },
-    { icon: "🧾", from: "Tax records", to: "Financial accounts", desc: "Tax documents are automatically connected to the accounts and assets they reference." },
+    { iconBg: "var(--color-amber-light)", iconColor: "#D4872E", from: "Insurance policies", to: "Coverage analysis", desc: "AI reads your insurance docs and cross-references them with your assets to identify coverage gaps.", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> },
+    { iconBg: "var(--color-teal-light)", iconColor: "#0F6E56", from: "Property deeds", to: "Real-time valuations", desc: "Your property documents are linked to live market data for always-current home valuations.", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
+    { iconBg: "#EEEDFE", iconColor: "#534AB7", from: "Estate documents", to: "Beneficiary tracking", desc: "Wills, trusts, and beneficiary designations are cross-checked against your financial accounts.", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> },
+    { iconBg: "var(--color-green-light)", iconColor: "#1E7B3E", from: "Tax records", to: "Financial accounts", desc: "Tax documents are automatically connected to the accounts and assets they reference.", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> },
   ];
 
   return (
-    <section className="bg-gradient-to-br from-slate-900 to-slate-950 text-white py-20 sm:py-28">
-      <div className="max-w-5xl mx-auto px-5 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5 border border-white/10">
-            <span>🔗</span> The Connective Tissue
-          </div>
-          <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3">Intelligence</p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Where Documents Meet Finances</h2>
-          <p className="mt-3 text-base text-slate-400">Cross-pillar intelligence that no fragmented tool stack can match.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <section className="py-14 sm:py-24" style={{ background: "var(--color-surface)" }}>
+      <div className="max-w-[1040px] mx-auto px-5 sm:px-6">
+        <FadeIn className="text-center max-w-[640px] mx-auto mb-14">
+          <div className="eyebrow mb-3">The Connective Tissue</div>
+          <h2 className="font-display text-[24px] sm:text-[40px] font-normal leading-[1.2] text-[var(--color-text-1)] mb-4">
+            Where documents meet finances.
+          </h2>
+          <p className="text-[17px] text-[var(--color-text-2)] leading-[1.6]">
+            Cross-pillar intelligence that no fragmented tool stack can match.
+          </p>
+        </FadeIn>
+        <AnimateOnScroll stagger className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {connections.map((c) => (
-            <div key={c.from} className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/[0.07] transition-colors">
-              <span className="text-2xl">{c.icon}</span>
-              <div className="mt-3 flex items-center gap-2 text-sm">
-                <span className="font-semibold text-teal">{c.from}</span>
-                <svg className="w-4 h-4 text-slate-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                <span className="text-slate-400">{c.to}</span>
+            <div
+              key={c.from}
+              className="animate-on-scroll card-hover bg-white border border-[var(--color-border)] rounded-[16px] p-6"
+              style={{ boxShadow: "var(--shadow-sm)" }}
+            >
+              <div
+                className="w-11 h-11 rounded-[12px] flex items-center justify-center mb-4"
+                style={{ background: c.iconBg, color: c.iconColor }}
+              >
+                {c.icon}
               </div>
-              <p className="mt-2 text-[13px] text-slate-400 leading-relaxed">{c.desc}</p>
+              <div className="flex items-center gap-2 text-sm mb-2">
+                <span className="font-semibold text-[var(--color-teal-deep)]">{c.from}</span>
+                <svg className="w-4 h-4 text-[var(--color-text-3)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+                <span className="text-[var(--color-text-2)]">{c.to}</span>
+              </div>
+              <p className="text-[14px] text-[var(--color-text-2)] leading-[1.5]">{c.desc}</p>
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  CTA                                                               */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function CTA() {
   return (
-    <section className="bg-slate-50 py-20 sm:py-28">
-      <div className="max-w-2xl mx-auto px-5 sm:px-6 text-center">
-        <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3">Get Started</p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+    <section className="py-14 sm:py-24 bg-navy text-center">
+      <div className="max-w-[640px] mx-auto px-5 sm:px-6">
+        <h2 className="font-display text-[26px] sm:text-[40px] font-normal text-white leading-[1.2] mb-4">
           Ready to organize your family&apos;s future?
         </h2>
-        <p className="mt-3 text-base text-slate-500">
-          Join families who have replaced 5 apps with one intelligent platform.
+        <p className="text-[17px] mb-9 leading-[1.6]" style={{ color: "rgba(255,255,255,0.55)" }}>
+          Join thousands of families who replaced 5 apps with one intelligent platform.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Link href="/pricing" className="bg-teal text-white font-medium px-7 py-3 rounded-full hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-[15px]">
-            Start Free Trial
-          </Link>
-          <Link href="/pricing" className="border border-slate-700 text-slate-900 font-medium px-7 py-3 rounded-full hover:bg-slate-100 transition-colors w-full sm:w-auto text-[15px]">
-            View Pricing
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href={APP_URL}
+            className="btn-press inline-flex items-center justify-center gap-2 bg-white text-[var(--color-navy)] font-semibold text-base py-3.5 px-8 rounded-[10px] hover:bg-[var(--color-surface)] transition-all w-full sm:w-auto"
+          >
+            Start free trial
+          </a>
+          <Link
+            href="/pricing"
+            className="btn-press inline-flex items-center justify-center gap-2 font-semibold text-base py-3.5 px-8 rounded-[10px] transition-all w-full sm:w-auto"
+            style={{ background: "transparent", color: "rgba(255,255,255,0.7)", border: "1.5px solid rgba(255,255,255,0.2)" }}
+          >
+            View pricing
           </Link>
         </div>
       </div>
@@ -227,14 +273,13 @@ function CTA() {
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 export default function FeaturesPage() {
   return (
     <>
       <Header />
       <main>
         <FeaturesHero />
-        <ProductShowcase />
         <DocumentVault />
         <FinancialIntelligence />
         <ConnectedIntelligence />

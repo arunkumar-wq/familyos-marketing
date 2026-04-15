@@ -2,39 +2,83 @@
 
 @theme inline {
   /* ---- Typography ---- */
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --font-sans: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-dm-serif), Georgia, serif;
 
-  /* ---- Primary palette ---- */
-  --color-navy: #0F172A;
-  --color-navy-light: #1E293B;
-  --color-navy-dark: #020617;
-  --color-teal: #0D9488;
-  --color-teal-hover: #0F766E;
-  --color-teal-light: #F0FDFA;
-  --color-orange: #F97316;
-  --color-orange-hover: #EA6C10;
+  /* ---- Brand colors ---- */
+  --color-teal: #2EC4B6;
+  --color-teal-dark: #25A89C;
+  --color-teal-light: #E6F7F5;
+  --color-teal-deep: #0F6E56;
+
+  --color-navy: #0C1B2A;
+  --color-navy-800: #132D45;
+
+  --color-amber: #F4A261;
+  --color-amber-light: #FEF3E6;
+  --color-amber-deep: #D4872E;
+
+  --color-red: #E74C3C;
+  --color-red-light: #FEF0EF;
+
+  --color-green: #27AE60;
+  --color-green-light: #EAFAF1;
+  --color-green-deep: #1E7B3E;
 
   /* ---- Surfaces ---- */
-  --color-gray-bg: #F8FAFC;
-  --color-gray-border: #E2E8F0;
+  --color-surface: #F8F7F4;
+  --color-surface-2: #F1EFEA;
+  --color-border: #E8E6E1;
+  --color-border-light: #F0EEEA;
+
+  /* ---- Text ---- */
+  --color-text-1: #0C1B2A;
+  --color-text-2: #5A6672;
+  --color-text-3: #8C939A;
+
+  /* ---- Radii ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
 
   /* ---- Shadows ---- */
-  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
-  --shadow-card-hover: 0 4px 16px 0 rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-  --shadow-elevated: 0 12px 32px -4px rgb(0 0 0 / 0.1), 0 4px 12px -4px rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / 0.08);
+  --shadow-xl: 0 20px 60px rgb(0 0 0 / 0.10);
 }
 
 body {
-  color: #1E293B;
+  color: #0C1B2A;
+  background: #FFFFFF;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-dm-serif), Georgia, serif;
 }
 
 /* Focus rings */
 *:focus-visible {
-  outline: 2px solid #0D9488;
+  outline: 2px solid #2EC4B6;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ================================================================== */
+/*  EYEBROW (small uppercase teal label above headings)               */
+/* ================================================================== */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2EC4B6;
 }
 
 /* ================================================================== */
@@ -77,23 +121,22 @@ body {
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
+  50%      { transform: translateY(-6px); }
 }
 .animate-float {
-  animation: float 5s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 .card-hover {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 0.08);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.08);
 }
 
 .btn-press {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 .btn-press:active {
   transform: scale(0.97);
@@ -104,4 +147,61 @@ body {
   .hero-animate > * { animation: none; }
   .animate-float { animation: none; }
   .card-hover:hover { transform: none; }
+}
+
+/* ================================================================== */
+/*  DASHBOARD MOCKUP styles (used in Hero + Showcase sections)        */
+/* ================================================================== */
+
+.dashboard-mockup {
+  background: #FFFFFF;
+  border: 1px solid #E8E6E1;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.10);
+  overflow: hidden;
+}
+.dashboard-titlebar {
+  padding: 12px 16px;
+  border-bottom: 1px solid #F0EEEA;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red    { background: #FF5F57; }
+.dot-yellow { background: #FFBD2E; }
+.dot-green  { background: #28C940; }
+
+/* Floating notification cards next to hero dashboard */
+.hero-float-card {
+  position: absolute;
+  background: #FFFFFF;
+  border: 1px solid #E8E6E1;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.08);
+  z-index: 10;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ================================================================== */
+/*  iPhone 17 Pro & all modern iPhones (max 430px wide)               */
+/*  Hard caps to guarantee no overflow / oversized typography         */
+/* ================================================================== */
+@media (max-width: 430px) {
+  /* Typography caps */
+  h1 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Always hide the desktop dashboard mockup on small screens */
+  .dashboard-mockup,
+  .hero-float-card {
+    display: none !important;
+  }
 }

@@ -6,7 +6,7 @@ import PricingContent from "./PricingContent";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Replace 5 disconnected apps with FamilyOS — plans from $149/yr. Save 50–90% vs. separate document storage, portfolio trackers, and password managers. 14-day free trial, 30-day money-back guarantee.",
+    "Replace 5 disconnected apps with LINIO — plans from $149/yr. Save 50–90% vs. separate document storage, portfolio trackers, and password managers. 14-day free trial, 30-day money-back guarantee.",
 };
 
 export default function PricingPage() {

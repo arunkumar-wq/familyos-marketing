@@ -1,245 +1,368 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import AnimateOnScroll, { FadeIn } from "@/components/AnimateOnScroll";
 
 const APP_URL = "https://familyos-staging-production.up.railway.app";
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  HERO                                                              */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function PricingHero() {
   return (
-    <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-[-0.03em] leading-[1.08]">
-          Simple, <span className="text-teal">Transparent</span> Pricing
+    <section className="bg-white pt-14 pb-10 sm:pt-20 sm:pb-16">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 text-center">
+        <div className="eyebrow mb-4">Pricing</div>
+        <h1 className="font-display text-[28px] sm:text-[48px] lg:text-[56px] leading-[1.2] sm:leading-[1.15] text-[var(--color-text-1)] font-normal mb-5 max-w-3xl mx-auto">
+          Simple pricing.{" "}
+          <em className="italic text-[var(--color-teal-dark)]">No surprises.</em>
         </h1>
-        <p className="mt-4 text-sm sm:text-base text-slate-400 max-w-lg mx-auto leading-relaxed">
-          One platform that replaces 5 apps. Save 50&ndash;90% while getting
-          more capability. Every plan includes a 14-day free trial.
+        <p className="text-[17px] text-[var(--color-text-2)] leading-[1.65] max-w-[560px] mx-auto">
+          Start free. Upgrade when your family is ready. Cancel anytime.
         </p>
       </div>
     </section>
   );
 }
 
-/* Portfolio showcase — shown between comparison table and FAQ */
-function PortfolioShowcase() {
-  return (
-    <section className="bg-white py-12 sm:py-16">
-      <div className="max-w-4xl mx-auto px-5 sm:px-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight text-center mb-2">
-          See What You Get
-        </h3>
-        <p className="text-sm text-slate-500 text-center mb-8">
-          A unified view of your family&apos;s complete financial picture.
-        </p>
-        <div className="rounded-xl overflow-hidden border border-slate-200 shadow-[var(--shadow-elevated)]">
-          <div className="bg-slate-100 px-4 py-2 flex items-center gap-2 border-b border-slate-200">
-            <span className="w-2 h-2 rounded-full bg-red-300" />
-            <span className="w-2 h-2 rounded-full bg-yellow-300" />
-            <span className="w-2 h-2 rounded-full bg-green-300" />
-            <span className="ml-3 text-[10px] text-slate-400 bg-white rounded px-2.5 py-0.5 border border-slate-100">app.familyos.com/portfolio</span>
-          </div>
-          <Image
-            src="/images/hero-portfolio.jpg"
-            alt="FamilyOS Net Worth Dashboard — unified financial portfolio tracking with AI insights"
-            width={1200}
-            height={675}
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  TIERS                                                             */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 const tiers = [
-  { name: "Essential", price: 149, monthly: 15, audience: "Young families", popular: false, features: ["Document vault", "AI auto-filing", "Basic portfolio tracking", "Smart reminders", "5 shared members", "10 GB storage", "Email support"] },
-  { name: "Premium", price: 249, monthly: 26, audience: "Mass affluent families", popular: true, features: ["Everything in Essential", "Full AI insights suite", "Unlimited sharing", "Cross-pillar intelligence", "Document audit", "Priority support", "50 GB storage"] },
-  { name: "Family Pro", price: 399, monthly: 42, audience: "HNW / multi-generational", popular: false, features: ["Everything in Premium", "White-glove onboarding", "Advanced estate tools", "API access", "Dedicated success manager", "Unlimited storage", "Custom integrations"] },
+  {
+    name: "Free",
+    desc: "For getting started",
+    annualAmount: "$0",
+    monthlyAmount: "$0",
+    period: "/month",
+    features: ["Up to 10 documents", "1 linked account", "Basic AI queries", "1 family member"],
+    featured: false,
+    cta: "Get started",
+  },
+  {
+    name: "Premium",
+    desc: "For families who want full control",
+    annualAmount: "$15",
+    monthlyAmount: "$19",
+    period: "/month",
+    features: [
+      "Unlimited documents",
+      "Unlimited accounts",
+      "Full AI copilot",
+      "Up to 6 family members",
+      "Emergency protocols",
+      "Portfolio tracking",
+    ],
+    featured: true,
+    cta: "Start free trial",
+  },
+  {
+    name: "Family Office",
+    desc: "For complex estates",
+    annualAmount: "Custom",
+    monthlyAmount: "Custom",
+    period: "",
+    features: [
+      "Everything in Premium",
+      "Dedicated advisor",
+      "Custom integrations",
+      "Estate planning tools",
+      "SLA guarantee",
+    ],
+    featured: false,
+    cta: "Contact us",
+  },
 ];
 
 function PricingTiers() {
   const [annual, setAnnual] = useState(true);
 
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center bg-slate-50 rounded-full p-1 border border-slate-200 shadow-[var(--shadow-card)]">
-            <button onClick={() => setAnnual(false)} className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${!annual ? "bg-slate-900 text-white" : "text-slate-500 hover:text-slate-900"}`}>Monthly</button>
-            <button onClick={() => setAnnual(true)} className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${annual ? "bg-slate-900 text-white" : "text-slate-500 hover:text-slate-900"}`}>Annual <span className="text-teal text-[11px] font-bold">Save 20%</span></button>
+    <section className="py-12 sm:py-20 bg-white">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
+        <FadeIn className="flex justify-center mb-10">
+          <div
+            className="inline-flex items-center bg-[var(--color-surface)] rounded-full p-1 border border-[var(--color-border)]"
+            style={{ boxShadow: "var(--shadow-sm)" }}
+          >
+            <button
+              onClick={() => setAnnual(false)}
+              className="px-5 py-2 rounded-full text-[13px] font-semibold transition-colors"
+              style={{
+                background: !annual ? "var(--color-navy)" : "transparent",
+                color: !annual ? "#fff" : "var(--color-text-2)",
+              }}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setAnnual(true)}
+              className="px-5 py-2 rounded-full text-[13px] font-semibold transition-colors"
+              style={{
+                background: annual ? "var(--color-navy)" : "transparent",
+                color: annual ? "#fff" : "var(--color-text-2)",
+              }}
+            >
+              Annual <span className="text-[var(--color-teal)] text-[11px] font-bold ml-1">Save 20%</span>
+            </button>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {tiers.map((tier) => (
-            <div key={tier.name} className={`relative bg-white rounded-xl p-6 sm:p-7 flex flex-col transition-shadow ${tier.popular ? "border-2 border-teal shadow-[var(--shadow-elevated)] md:scale-[1.03]" : "border border-slate-200 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]"}`}>
-              {tier.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal text-white text-[11px] font-bold px-3.5 py-0.5 rounded-full">MOST POPULAR</div>}
-              <h3 className="text-lg font-bold text-slate-900">{tier.name}</h3>
-              <p className="mt-0.5 text-xs text-slate-400">{tier.audience}</p>
-              <div className="mt-5">
-                <span className="text-3xl sm:text-4xl font-bold text-slate-900">${annual ? tier.price : tier.monthly}</span>
-                <span className="text-slate-400 text-sm">/{annual ? "yr" : "mo"}</span>
+        <AnimateOnScroll stagger className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[960px] mx-auto items-stretch">
+          {tiers.map((tier) => {
+            const amount = annual ? tier.annualAmount : tier.monthlyAmount;
+            return (
+              <div
+                key={tier.name}
+                className={`animate-on-scroll card-hover relative bg-white rounded-[20px] py-9 px-7 flex flex-col ${
+                  tier.featured ? "border-2 border-teal" : "border border-[var(--color-border)]"
+                }`}
+                style={{ boxShadow: tier.featured ? "var(--shadow-lg)" : undefined }}
+              >
+                {tier.featured && (
+                  <div className="absolute -top-[13px] left-1/2 -translate-x-1/2 bg-teal text-white text-[12px] font-semibold py-1 px-4 rounded-[20px] whitespace-nowrap">
+                    Most Popular
+                  </div>
+                )}
+                <div className="text-lg font-semibold text-[var(--color-text-1)] mb-1">{tier.name}</div>
+                <div className="text-[13px] text-[var(--color-text-3)] mb-5">{tier.desc}</div>
+                <div className="mb-6">
+                  <span
+                    className={`font-bold text-[var(--color-text-1)] tracking-[-0.03em] leading-none ${
+                      amount === "Custom" ? "text-[40px]" : "text-[48px]"
+                    }`}
+                  >
+                    {amount}
+                  </span>
+                  {tier.period && amount !== "Custom" && (
+                    <span className="text-[15px] font-normal text-[var(--color-text-3)]">{tier.period}</span>
+                  )}
+                </div>
+                <ul className="list-none mb-8 flex-1">
+                  {tier.features.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-center gap-2.5 text-sm text-[var(--color-text-2)] py-2 border-b border-[var(--color-border-light)] last:border-b-0"
+                    >
+                      <span
+                        className="w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0"
+                        style={{
+                          background: tier.featured ? "var(--color-teal-light)" : "var(--color-surface-2)",
+                        }}
+                      >
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke={tier.featured ? "#0F6E56" : "var(--color-text-3)"}
+                          strokeWidth="3"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      </span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={APP_URL}
+                  className={`btn-press w-full text-center inline-flex items-center justify-center gap-2 font-semibold text-sm py-2.5 px-6 rounded-[8px] transition-all ${
+                    tier.featured
+                      ? "bg-teal text-white hover:bg-teal-dark"
+                      : "bg-transparent text-[var(--color-text-1)] border-[1.5px] border-[var(--color-border)] hover:border-[var(--color-text-3)] hover:bg-[var(--color-surface)]"
+                  }`}
+                  style={tier.featured ? { boxShadow: "0 2px 8px rgba(46,196,182,0.25)" } : undefined}
+                >
+                  {tier.cta}
+                </a>
               </div>
-              {annual && <p className="mt-1 text-xs text-slate-400">${Math.round(tier.price / 12)}/mo billed annually</p>}
-              <ul className="mt-6 space-y-2.5 flex-1">
-                {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-slate-600">
-                    <svg className="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href={APP_URL} className={`mt-6 block text-center font-medium py-2.5 rounded-full text-sm transition-all ${tier.popular ? "bg-teal text-white hover:bg-teal-hover" : "bg-slate-900 text-white hover:bg-slate-800"}`}>
-                Start Free Trial
-              </a>
-            </div>
-          ))}
-        </div>
+            );
+          })}
+        </AnimateOnScroll>
 
-        <div className="mt-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-teal-light text-teal text-[13px] font-medium px-4 py-2 rounded-full border border-teal/15">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            30-day money-back guarantee
-          </div>
-        </div>
+        <p className="text-center text-[13px] text-[var(--color-text-3)] mt-6">
+          14-day free trial on Premium · Cancel anytime · No credit card required
+        </p>
       </div>
     </section>
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  COMPARISON TABLE — mobile-responsive with horizontal scroll       */
-/* ------------------------------------------------------------------ */
-const comparisonRows: { feature: string; essential: boolean | string; premium: boolean | string; pro: boolean | string }[] = [
-  { feature: "Document vault", essential: true, premium: true, pro: true },
-  { feature: "AI auto-filing", essential: true, premium: true, pro: true },
-  { feature: "Smart reminders", essential: true, premium: true, pro: true },
-  { feature: "Portfolio tracking", essential: true, premium: true, pro: true },
-  { feature: "Full AI insights", essential: false, premium: true, pro: true },
-  { feature: "Unlimited sharing", essential: false, premium: true, pro: true },
-  { feature: "Cross-pillar intelligence", essential: false, premium: true, pro: true },
-  { feature: "Document audit", essential: false, premium: true, pro: true },
-  { feature: "Priority support", essential: false, premium: true, pro: true },
-  { feature: "White-glove onboarding", essential: false, premium: false, pro: true },
-  { feature: "Estate tools", essential: false, premium: false, pro: true },
-  { feature: "API access", essential: false, premium: false, pro: true },
-  { feature: "Success manager", essential: false, premium: false, pro: true },
-  { feature: "Storage", essential: "10 GB", premium: "50 GB", pro: "Unlimited" },
-  { feature: "Members", essential: "5", premium: "Unlimited", pro: "Unlimited" },
+/* ================================================================== */
+/*  COMPARISON TABLE                                                  */
+/* ================================================================== */
+const comparisonRows: { feature: string; free: boolean | string; premium: boolean | string; office: boolean | string }[] = [
+  { feature: "Documents", free: "10", premium: "Unlimited", office: "Unlimited" },
+  { feature: "Linked accounts", free: "1", premium: "Unlimited", office: "Unlimited" },
+  { feature: "Family members", free: "1", premium: "6", office: "Unlimited" },
+  { feature: "AI copilot", free: "Basic", premium: "Full", office: "Full" },
+  { feature: "Portfolio tracking", free: false, premium: true, office: true },
+  { feature: "Smart reminders", free: true, premium: true, office: true },
+  { feature: "Emergency protocols", free: false, premium: true, office: true },
+  { feature: "Estate planning tools", free: false, premium: false, office: true },
+  { feature: "Custom integrations", free: false, premium: false, office: true },
+  { feature: "Dedicated advisor", free: false, premium: false, office: true },
+  { feature: "SLA guarantee", free: false, premium: false, office: true },
 ];
 
-function CellValue({ value }: { value: boolean | string }) {
-  if (typeof value === "string") return <span className="text-xs font-semibold text-slate-900">{value}</span>;
+function CellValue({ value, accent }: { value: boolean | string; accent?: boolean }) {
+  if (typeof value === "string") {
+    return <span className="text-[13px] font-semibold text-[var(--color-text-1)]">{value}</span>;
+  }
   return value ? (
-    <svg className="w-4 h-4 text-teal mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+    <svg className="w-4 h-4 mx-auto" fill="none" viewBox="0 0 24 24" stroke={accent ? "#0F6E56" : "var(--color-text-2)"} strokeWidth="2.5">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
   ) : (
-    <span className="block w-4 h-px bg-slate-200 mx-auto" />
+    <span className="block w-4 h-px bg-[var(--color-border)] mx-auto" />
   );
 }
 
 function ComparisonTable() {
   return (
-    <section className="bg-slate-50 py-20 sm:py-28">
-      <div className="max-w-4xl mx-auto px-5 sm:px-6">
-        <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3 text-center">Plans</p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight text-center">Compare Plans</h2>
-        <p className="mt-3 text-base text-slate-500 text-center">See exactly what&apos;s included in each tier.</p>
+    <section className="py-14 sm:py-24" style={{ background: "var(--color-surface)" }}>
+      <div className="max-w-[1040px] mx-auto px-5 sm:px-6">
+        <FadeIn className="text-center max-w-[640px] mx-auto mb-12">
+          <div className="eyebrow mb-3">Plans</div>
+          <h2 className="font-display text-[24px] sm:text-[40px] font-normal leading-[1.2] text-[var(--color-text-1)] mb-3">
+            Compare every feature.
+          </h2>
+          <p className="text-[17px] text-[var(--color-text-2)]">See exactly what&apos;s included in each plan.</p>
+        </FadeIn>
 
-        {/* Scrollable wrapper for mobile */}
-        <div className="mt-10 -mx-5 sm:mx-0 overflow-x-auto">
-          <div className="min-w-[480px] sm:min-w-0 mx-5 sm:mx-0">
-            <div className="bg-white rounded-xl border border-slate-200 shadow-[var(--shadow-card)] overflow-hidden">
-              <div className="grid grid-cols-4 border-b border-slate-200 bg-slate-50/60">
-                <div className="px-4 py-3 text-xs font-semibold text-slate-500">Feature</div>
-                <div className="px-4 py-3 text-center text-xs font-bold text-slate-900">Essential</div>
-                <div className="px-4 py-3 text-center text-xs font-bold text-teal">Premium</div>
-                <div className="px-4 py-3 text-center text-xs font-bold text-slate-900">Family Pro</div>
-              </div>
-              {comparisonRows.map((row, i) => (
-                <div key={row.feature} className={`grid grid-cols-4 ${i < comparisonRows.length - 1 ? "border-b border-slate-100" : ""}`}>
-                  <div className="px-4 py-2.5 text-xs text-slate-600 font-medium">{row.feature}</div>
-                  <div className="px-4 py-2.5 flex items-center justify-center"><CellValue value={row.essential} /></div>
-                  <div className="px-4 py-2.5 flex items-center justify-center bg-teal/[0.02]"><CellValue value={row.premium} /></div>
-                  <div className="px-4 py-2.5 flex items-center justify-center"><CellValue value={row.pro} /></div>
+        <FadeIn>
+          <div className="-mx-5 sm:mx-0 overflow-x-auto">
+            <div className="min-w-[560px] sm:min-w-0 mx-5 sm:mx-0">
+              <div className="bg-white rounded-[20px] border border-[var(--color-border)] overflow-hidden" style={{ boxShadow: "var(--shadow-sm)" }}>
+                <div className="grid grid-cols-4 border-b border-[var(--color-border-light)] bg-[var(--color-surface)]">
+                  <div className="px-5 py-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-3)]">
+                    Feature
+                  </div>
+                  <div className="px-5 py-4 text-center text-sm font-semibold text-[var(--color-text-1)]">Free</div>
+                  <div className="px-5 py-4 text-center text-sm font-semibold text-[var(--color-teal-deep)]">Premium</div>
+                  <div className="px-5 py-4 text-center text-sm font-semibold text-[var(--color-text-1)]">Family Office</div>
                 </div>
-              ))}
+                {comparisonRows.map((row, i) => (
+                  <div
+                    key={row.feature}
+                    className={`grid grid-cols-4 ${i < comparisonRows.length - 1 ? "border-b border-[var(--color-border-light)]" : ""}`}
+                  >
+                    <div className="px-5 py-3.5 text-sm text-[var(--color-text-2)]">{row.feature}</div>
+                    <div className="px-5 py-3.5 flex items-center justify-center">
+                      <CellValue value={row.free} />
+                    </div>
+                    <div className="px-5 py-3.5 flex items-center justify-center" style={{ background: "rgba(46,196,182,0.03)" }}>
+                      <CellValue value={row.premium} accent />
+                    </div>
+                    <div className="px-5 py-3.5 flex items-center justify-center">
+                      <CellValue value={row.office} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  FAQ                                                               */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function PricingFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const faqs = [
     { q: "Can I switch plans later?", a: "Absolutely. You can upgrade or downgrade at any time. When upgrading, you\u2019ll be charged the prorated difference. When downgrading, the credit applies to your next billing cycle." },
-    { q: "Is there a free trial?", a: "Yes! Every plan comes with a 14-day free trial. No credit card required. Full access to all features in your chosen plan." },
+    { q: "Is there a free trial?", a: "Yes! Premium comes with a 14-day free trial. No credit card required. Full access to all features in your chosen plan." },
     { q: "What payment methods do you accept?", a: "All major credit cards (Visa, Mastercard, Amex), ACH bank transfers for annual plans, and invoicing for enterprise customers." },
     { q: "What\u2019s the money-back guarantee?", a: "If you\u2019re not satisfied within 30 days of your first paid subscription, we\u2019ll refund your payment in full \u2014 no questions asked." },
-    { q: "Do you offer discounts for larger families?", a: "The Family Pro plan includes unlimited members and storage. For family offices managing multiple families, contact us for custom enterprise pricing." },
+    { q: "Do you offer discounts for larger families?", a: "Family Office includes unlimited members and storage. For family offices managing multiple families, contact us for custom enterprise pricing." },
   ];
 
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="max-w-2xl mx-auto px-5 sm:px-6">
-        <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3 text-center">FAQ</p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight text-center">Pricing Questions</h2>
-        <div className="mt-10 space-y-2">
+    <section className="py-14 sm:py-24 bg-white">
+      <div className="max-w-[680px] mx-auto px-5 sm:px-6">
+        <FadeIn className="text-center mb-10">
+          <div className="eyebrow mb-3">FAQ</div>
+          <h2 className="font-display text-[24px] sm:text-[40px] font-normal leading-[1.2] text-[var(--color-text-1)]">
+            Pricing questions.
+          </h2>
+        </FadeIn>
+        <AnimateOnScroll stagger className="space-y-2">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/40">
-              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-slate-50 transition-colors">
-                <span className="font-semibold text-slate-900 text-sm">{faq.q}</span>
-                <svg className={`w-4 h-4 text-slate-400 shrink-0 ml-4 transition-transform ${openIndex === i ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+            <div
+              key={i}
+              className="animate-on-scroll border border-[var(--color-border)] rounded-[12px] overflow-hidden bg-white"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--color-surface)] transition-colors"
+              >
+                <span className="font-semibold text-[var(--color-text-1)] text-sm">{faq.q}</span>
+                <svg
+                  className={`w-4 h-4 text-[var(--color-text-3)] shrink-0 ml-4 transition-transform ${openIndex === i ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
-              {openIndex === i && <div className="px-5 pb-4 text-sm text-slate-500 leading-relaxed">{faq.a}</div>}
+              {openIndex === i && (
+                <div className="px-5 pb-4 text-[14px] text-[var(--color-text-2)] leading-[1.65]">{faq.a}</div>
+              )}
             </div>
           ))}
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 /*  CTA                                                               */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 function PricingCTA() {
   return (
-    <section className="bg-gradient-to-br from-slate-900 to-slate-950 text-white py-20 sm:py-28">
-      <div className="max-w-2xl mx-auto px-5 sm:px-6 text-center">
-        <p className="text-sm font-medium text-teal uppercase tracking-widest mb-3">Get Started</p>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Ready to simplify your family&apos;s life?</h2>
-        <p className="mt-3 text-base text-slate-400">Start your free trial today. No credit card required.</p>
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href={APP_URL} className="bg-teal text-white font-medium px-7 py-3 rounded-full hover:bg-teal-hover transition-all shadow-[var(--shadow-elevated)] w-full sm:w-auto text-[15px]">Start Free Trial</a>
-          <Link href="/features" className="border border-slate-700 text-white font-medium px-7 py-3 rounded-full hover:bg-white/5 transition-all w-full sm:w-auto text-[15px]">Explore Features</Link>
+    <section className="py-14 sm:py-24 bg-navy text-center">
+      <div className="max-w-[640px] mx-auto px-5 sm:px-6">
+        <h2 className="font-display text-[26px] sm:text-[40px] font-normal text-white leading-[1.2] mb-4">
+          Ready to simplify your family&apos;s life?
+        </h2>
+        <p className="text-[17px] mb-9 leading-[1.6]" style={{ color: "rgba(255,255,255,0.55)" }}>
+          Start your free trial today. No credit card required.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href={APP_URL}
+            className="btn-press inline-flex items-center justify-center gap-2 bg-white text-[var(--color-navy)] font-semibold text-base py-3.5 px-8 rounded-[10px] hover:bg-[var(--color-surface)] transition-all w-full sm:w-auto"
+          >
+            Start free trial
+          </a>
+          <Link
+            href="/features"
+            className="btn-press inline-flex items-center justify-center gap-2 font-semibold text-base py-3.5 px-8 rounded-[10px] transition-all w-full sm:w-auto"
+            style={{ background: "transparent", color: "rgba(255,255,255,0.7)", border: "1.5px solid rgba(255,255,255,0.2)" }}
+          >
+            Explore features
+          </Link>
         </div>
       </div>
     </section>
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
 export default function PricingContent() {
   return (
     <>
       <PricingHero />
       <PricingTiers />
       <ComparisonTable />
-      <PortfolioShowcase />
       <PricingFAQ />
       <PricingCTA />
     </>

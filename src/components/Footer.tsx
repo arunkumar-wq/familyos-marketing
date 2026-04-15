@@ -6,80 +6,77 @@ const APP_URL = "https://familyos-staging-production.up.railway.app";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-white">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+    <footer className="bg-navy" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-12 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-10">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 font-semibold text-[15px] tracking-tight">
-              <span className="w-7 h-7 bg-teal rounded-md flex items-center justify-center text-white text-xs font-bold">
-                F
+          <div className="sm:col-span-2 md:col-span-1">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-white font-bold text-[20px]"
+            >
+              <span className="w-8 h-8 bg-navy-800 rounded-[8px] flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
               </span>
-              FamilyOS
+              LINIO
             </Link>
-            <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-xs">
-              The operating system every family needs to protect what matters most.
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+              The intelligent system for families who take their future seriously.
+              Organize, protect, and act &mdash; automatically.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Product</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link href="/features" className="text-slate-400 hover:text-white transition-colors">Features</Link></li>
-              <li><Link href="/pricing" className="text-slate-400 hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link href="/#how-it-works" className="text-slate-400 hover:text-white transition-colors">How It Works</Link></li>
-              <li><a href={APP_URL} className="text-slate-400 hover:text-white transition-colors">Log in</a></li>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.06em] mb-4" style={{ color: "rgba(255,255,255,0.35)" }}>
+              Product
+            </h4>
+            <ul className="space-y-2.5 text-sm list-none">
+              <li><Link href="/features" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Features</Link></li>
+              <li><Link href="/pricing" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Pricing</Link></li>
+              <li><a href="#security" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Security</a></li>
+              <li><a href={APP_URL} style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Log in</a></li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Company</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link href="/about" className="text-slate-400 hover:text-white transition-colors">About</Link></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Contact</a></li>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.06em] mb-4" style={{ color: "rgba(255,255,255,0.35)" }}>
+              Company
+            </h4>
+            <ul className="space-y-2.5 text-sm list-none">
+              <li><Link href="/about" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">About</Link></li>
+              <li><a href="#" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Blog</a></li>
+              <li><a href="#" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Careers</a></li>
+              <li><a href="#" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Contact</a></li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Legal</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Security</a></li>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.06em] mb-4" style={{ color: "rgba(255,255,255,0.35)" }}>
+              Legal
+            </h4>
+            <ul className="space-y-2.5 text-sm list-none">
+              <li><a href="#" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Privacy Policy</a></li>
+              <li><a href="#" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Terms of Service</a></li>
+              <li><a href="#" style={{ color: "rgba(255,255,255,0.55)" }} className="hover:!text-[rgba(255,255,255,0.9)] transition-colors">Cookie Policy</a></li>
             </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Stay Updated</h4>
-            <p className="text-sm text-slate-400 mb-3">Product news and updates</p>
-            <form className="flex" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="you@email.com"
-                aria-label="Email address"
-                className="w-full min-w-0 bg-slate-900 border border-slate-800 rounded-l-lg px-3 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent"
-              />
-              <button type="submit" className="bg-teal px-4 py-2 rounded-r-lg text-sm font-medium hover:bg-teal-hover transition-colors shrink-0">
-                Go
-              </button>
-            </form>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <span className="bg-slate-900 border border-slate-800 text-[11px] px-3 py-1 rounded-full text-slate-400">256-bit Encryption</span>
-            <span className="bg-slate-900 border border-slate-800 text-[11px] px-3 py-1 rounded-full text-slate-400">Zero-Knowledge</span>
-            <span className="bg-slate-900 border border-slate-800 text-[11px] px-3 py-1 rounded-full text-slate-400">SOC 2</span>
-          </div>
-          <p className="text-xs text-slate-600">&copy; 2026 FamilyOS. All rights reserved.</p>
+        <div
+          className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[13px] text-center sm:text-left"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            color: "rgba(255,255,255,0.25)",
+          }}
+        >
+          <span>&copy; 2026 LINIO Inc. All rights reserved.</span>
+          <span>Made with care for families everywhere.</span>
         </div>
       </div>
     </footer>
