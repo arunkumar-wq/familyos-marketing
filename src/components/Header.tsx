@@ -123,7 +123,7 @@ export default function Header() {
       {/* Mobile menu panel — dark navy, full height, half width, top-right */}
       {menuOpen && (
         <div
-          className="md:hidden fixed top-16 right-0 bottom-0 z-50 w-[55%] min-w-[240px] bg-[var(--color-navy)] shadow-2xl flex flex-col menu-panel-slide"
+          className="md:hidden fixed top-16 right-0 bottom-0 z-50 w-[55%] min-w-[240px] bg-[var(--color-navy-800)] shadow-2xl flex flex-col menu-panel-slide"
         >
           <nav className="flex-1 overflow-y-auto px-4 py-6">
             <ul className="flex flex-col gap-1 list-none">
