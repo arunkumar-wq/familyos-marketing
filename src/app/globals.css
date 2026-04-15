@@ -198,10 +198,26 @@ body {
     font-size: 26px !important;
     line-height: 1.25 !important;
   }
+}
 
-  /* Always hide the desktop dashboard mockup on small screens */
-  .dashboard-mockup,
-  .hero-float-card {
-    display: none !important;
+/* ================================================================== */
+/*  DASHBOARD MOCKUP entrance animation (runs on all screens)         */
+/*  Subtle scale + fade-up on first paint                             */
+/* ================================================================== */
+@keyframes mockup-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.mockup-reveal {
+  animation: mockup-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 300ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mockup-reveal { animation: none; }
 }

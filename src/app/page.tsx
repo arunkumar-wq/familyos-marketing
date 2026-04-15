@@ -65,29 +65,29 @@ function Hero() {
             </div>
           </div>
 
-          {/* Visual: dashboard mockup with floating cards — hidden on mobile */}
-          <div className="relative hidden sm:block">
+          {/* Visual: dashboard mockup with floating cards — visible on all sizes */}
+          <div className="relative mockup-reveal">
             {/* Floating card top right */}
             <div
-              className="hero-float-card hidden sm:block top-[-12px] right-[-16px]"
+              className="hero-float-card top-[-8px] right-[-4px] sm:top-[-12px] sm:right-[-16px] max-w-[220px] sm:max-w-none"
               style={{ borderLeft: "3px solid var(--color-amber)" }}
             >
-              <div className="text-[12px] font-semibold text-[var(--color-text-1)] mb-0.5">
+              <div className="text-[11px] sm:text-[12px] font-semibold text-[var(--color-text-1)] mb-0.5">
                 Passport expires in 34 days
               </div>
-              <div className="text-[11px] text-[var(--color-text-3)]">
+              <div className="text-[10px] sm:text-[11px] text-[var(--color-text-3)]">
                 Sarah Miller — Renewal recommended
               </div>
             </div>
             {/* Floating card bottom left */}
             <div
-              className="hero-float-card hidden sm:block bottom-[24px] left-[-24px]"
+              className="hero-float-card bottom-[16px] left-[-4px] sm:bottom-[24px] sm:left-[-24px] max-w-[200px] sm:max-w-none"
               style={{ borderLeft: "3px solid var(--color-teal)", animationDelay: "-1.5s" }}
             >
-              <div className="text-[12px] font-semibold mb-0.5" style={{ color: "#0F6E56" }}>
+              <div className="text-[11px] sm:text-[12px] font-semibold mb-0.5" style={{ color: "#0F6E56" }}>
                 AI: Review home insurance
               </div>
-              <div className="text-[11px] text-[var(--color-text-3)]">
+              <div className="text-[10px] sm:text-[11px] text-[var(--color-text-3)]">
                 Coverage may need updating
               </div>
             </div>
@@ -105,7 +105,7 @@ function Hero() {
                 </div>
               </div>
               <div
-                className="p-5 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 min-h-[340px]"
+                className="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 min-h-[320px] sm:min-h-[340px]"
                 style={{ background: "var(--color-surface)" }}
               >
                 {/* Sidebar — hidden on mobile */}
@@ -139,7 +139,7 @@ function Hero() {
                         <div className="text-[12px] font-medium text-[var(--color-text-3)] mb-1">
                           Net Worth
                         </div>
-                        <div className="text-[28px] font-bold text-[var(--color-text-1)] tracking-[-0.02em] leading-none">
+                        <div className="text-[22px] sm:text-[28px] font-bold text-[var(--color-text-1)] tracking-[-0.02em] leading-none">
                           $2,437,850
                         </div>
                       </div>
@@ -692,7 +692,7 @@ function Showcase() {
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <div className="text-[12px] font-medium text-[var(--color-text-3)] mb-1">Total Net Worth</div>
-                        <div className="text-[28px] font-bold text-[var(--color-text-1)] tracking-[-0.02em] leading-none">
+                        <div className="text-[22px] sm:text-[28px] font-bold text-[var(--color-text-1)] tracking-[-0.02em] leading-none">
                           $2,437,850
                         </div>
                       </div>
