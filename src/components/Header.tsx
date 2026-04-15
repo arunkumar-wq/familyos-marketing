@@ -120,10 +120,11 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile menu panel — dark navy, full height, half width, top-right */}
+      {/* Mobile menu panel — light off-white, full height, half width, top-right */}
       {menuOpen && (
         <div
-          className="md:hidden fixed top-16 right-0 bottom-0 z-50 w-[55%] min-w-[240px] bg-[var(--color-navy-800)] shadow-2xl flex flex-col menu-panel-slide"
+          className="md:hidden fixed top-16 right-0 bottom-0 z-50 w-[55%] min-w-[240px] shadow-2xl flex flex-col menu-panel-slide"
+          style={{ background: "#F9F9F9" }}
         >
           <nav className="flex-1 overflow-y-auto px-4 py-6">
             <ul className="flex flex-col gap-1 list-none">
@@ -137,8 +138,8 @@ export default function Header() {
                       onClick={() => setMenuOpen(false)}
                       className={`flex items-center gap-3 text-left text-[15px] font-semibold rounded-[10px] px-3.5 py-3 transition-colors ${
                         isActive
-                          ? "bg-white/10 text-white"
-                          : "text-white/80 hover:bg-white/5 hover:text-white"
+                          ? "bg-[var(--color-teal-light)] text-[var(--color-teal-deep)]"
+                          : "text-[var(--color-text-1)] hover:bg-black/[0.04]"
                       }`}
                     >
                       <Icon className="shrink-0" />
@@ -150,7 +151,7 @@ export default function Header() {
             </ul>
 
             {/* Separator */}
-            <div className="my-4 border-t border-white/10" />
+            <div className="my-4 border-t border-[var(--color-border-light)]" />
 
             {/* Secondary: Get started as primary CTA */}
             <a
